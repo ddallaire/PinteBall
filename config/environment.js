@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'pinte-ball',
+    podModulePrefix: 'pinte-ball/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -18,8 +19,7 @@ module.exports = function(environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      //Environment variables go here
     }
   };
 
