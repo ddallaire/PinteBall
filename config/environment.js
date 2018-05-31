@@ -35,7 +35,6 @@ module.exports = function(environment) {
     'connect-src': "'self' https://cas.usherbrooke.ca"
   }
 
-
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
