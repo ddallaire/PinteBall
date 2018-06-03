@@ -8,6 +8,10 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('home');
+  this.route('reviews');
+  this.route('beers');
+  this.route('breweries');
+  this.route('profile');
   this.route('not-found', {path: '/*path'});
 });
 
