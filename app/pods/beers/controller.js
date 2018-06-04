@@ -1,4 +1,4 @@
 import Controller from '@ember/controller';
 
-export default Controller.extend(RouteQueryManager, {
+export default Controller.extend({
 });

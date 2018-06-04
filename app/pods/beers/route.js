@@ -1,10 +1,14 @@
 import Route from '@ember/routing/route';
-import query from 'assets/pinte-ball/queries/get-beers.graphql';
+import RouteQueryManager from 'ember-apollo-client/mixins/route-query-manager';
+import query from '../../queries/get-beers';
 
-export default Route.extend({
-    apollo: Ember.inject.service(),
-
+export default Route.extend(RouteQueryManager, {
     model() {
-        return this.get('apollo').query({query});
+        let variables = {
+          skip: 0,
+          first: 10
+        };
+
+        return this.get('apollo').query({ query, variables }, 'beers');
     }
 });
