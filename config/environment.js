@@ -3,7 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     apollo: {
-      apiURL: "http://localhost:3000"
+      apiURL: "http://localhost:3000/graphql"
     },
     modulePrefix: 'pinte-ball',
     podModulePrefix: 'pinte-ball/pods',
