@@ -1,5 +1,5 @@
-{
-    beers(skip: 0, first: 5) {
-        id
-    }
+ query Beers($skip: Int!, $first: Int!) {
+      beers(skip: $skip, first: $first) {
+          id
+      }
 }
