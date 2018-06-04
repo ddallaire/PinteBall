@@ -1,0 +1,5 @@
+{
+    beers(skip: 0, first: 5) {
+        id
+    }
+}
