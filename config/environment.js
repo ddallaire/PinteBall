@@ -2,6 +2,9 @@
 
 module.exports = function(environment) {
   let ENV = {
+    apollo: {
+      apiURL: "http://localhost:3000"
+    },
     modulePrefix: 'pinte-ball',
     podModulePrefix: 'pinte-ball/pods',
     environment,
