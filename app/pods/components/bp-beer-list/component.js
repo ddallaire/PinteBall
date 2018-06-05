@@ -8,7 +8,6 @@ export default Component.extend({
         const table = [];
         for(let i = 0; i < nbRow * 2; i+=2) {
             let row = [beers[i], beers[i+1]];
-            console.log(row);
             table.push(row);
         }
         return table;
