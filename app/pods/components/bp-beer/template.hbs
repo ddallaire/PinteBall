@@ -1,0 +1,19 @@
+<div class="beer-page">
+  {{beer.name}}<br/>
+  {{beer.description}}<br/>
+  IBU: {{beer.ibu}}<br/>
+  ABV%: {{beer.alcoholPercent}}<br/>
+  Rating: {{beer.rating}}<br/>
+  Brasserie(s):
+  {{#each beer.breweries as |brewery|}}
+    {{brewery.name}}<br/>
+  {{else}}
+    No brewery<br/>
+  {{/each}}
+  Tag(s):
+  {{#each beer.tags as |tag|}}
+    #{{tag.name}}
+  {{else}}
+    No tag
+  {{/each}}
+</div>
