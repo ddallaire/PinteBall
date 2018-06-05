@@ -1,0 +1,46 @@
+<div class="beers-page">
+    <div class="beers-container">
+        <h1>Beers</h1>
+        <!--
+        <div class="row">
+            <div class="column">
+            </div>
+            <div class="column">
+                 {{#bp-beer-card title="Coors light"
+                    type="English pale ale"
+                    brewery="Dieu du ciel"
+                    ibu=28
+                    alcool=9}}
+                    <p>test</p>
+                {{/bp-beer-card}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+            </div>
+            <div class="column">
+            </div>
+        </div>
+        --> 
+        
+        {{#each table as |row|}}
+            <div class="row">
+                {{#each row as |beer|}}
+                    {{#if beer}}
+                        <div class="column">
+                            {{#bp-beer-card 
+                                title=beer.name
+                                type="English pale ale"
+                                brewery="Dieu du ciel"
+                                ibu=28
+                                alcool=9
+                                rating=1.5
+                                description=beer.description}}
+                            {{/bp-beer-card}}
+                        </div>
+                    {{/if}}
+                {{/each}}
+            </div>
+        {{/each}}
+    </div>
+</div>
