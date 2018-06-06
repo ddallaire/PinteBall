@@ -42,7 +42,7 @@ export default Service.extend({
         this.set('credentials', userCredentials);
         return true;
       })
-      .catch(error => {
+      .catch(() => {
         return false;
       });
   },
