@@ -1,17 +1,17 @@
 <div class="beers-container">
-    <h1>Beers</h1>
-    {{#bp-table table=table as |beer|}}
-        {{#bp-beer-card
-            beerId=beer.id
-            title=beer.name
-            type="English pale ale"
-            brewery=(array-join beer.breweries)
-            ibu=beer.ibu
-            alcool=beer.alcoholPercent
-            rating=beer.rating
-            description=beer.description
-            imagePath=beer.imagePath
-            link="beers/show"}}
-        {{/bp-beer-card}}
-    {{/bp-table}}
+  <h1>Beers</h1>
+  {{#bp-table table=table as |beer|}}
+    {{#bp-beer-card
+      beerId=beer.id
+      title=beer.name
+      type="English pale ale"
+      breweries=(array-join beer.breweries)
+      ibu=beer.ibu
+      alcool=beer.alcoholPercent
+      rating=beer.rating
+      description=beer.description
+      imagePath=beer.imagePath
+      link="beers/show"}}
+    {{/bp-beer-card}}
+  {{/bp-table}}
 </div>
