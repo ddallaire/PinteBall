@@ -7,15 +7,16 @@
                     {{#if beer}}
                         <div class="column">
                             {{#bp-beer-card
-                                id = beer.id
+                                id=beer.id
                                 title=beer.name
                                 type="English pale ale"
-                                brewery=beer.brewery.name
+                                brewery=beer.breweries.0.name
                                 ibu=beer.ibu
                                 alcool=beer.alcoholPercent
                                 rating=beer.rating
                                 description=beer.description
-                                imagePath=beer.imagePath}}
+                                imagePath=beer.imagePath
+                                link="beers/show"}}
                             {{/bp-beer-card}}
                         </div>
                     {{/if}}
