@@ -1,0 +1,13 @@
+query Breweries($skip: Int!, $first: Int!){
+    breweries(skip: $skip, first: $first, orderBy: NAME, orderType: ASC, tags: []){
+		id
+		name
+		description
+		imagePath
+		tags {
+			id
+			name
+		}
+		rating
+    }
+}

@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import RouteQueryManager from 'ember-apollo-client/mixins/route-query-manager';
-import query from 'pinte-ball/queries/get-beers';
+import query from 'pinte-ball/queries/get-breweries';
 
 export default Route.extend(RouteQueryManager, {
     model() {
