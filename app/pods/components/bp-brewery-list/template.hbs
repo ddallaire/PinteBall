@@ -1,7 +1,7 @@
 <div class="breweries-container">
     <h1>Breweries</h1>
     {{#bp-table table=table as |brewery|}}
-        {{#bp-brewery-card 
+        {{#bp-brewery-card
             title=brewery.name
             type=(concat "#" brewery.tags.0.name)
             rating=brewery.rating
