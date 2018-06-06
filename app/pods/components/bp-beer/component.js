@@ -2,7 +2,8 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 
 export default Component.extend({
-  beer: computed('params.[]', function() {
-    return this.get('params')[0];
-  })
+  beerRating: computed('beer', function() {
+    let rating = this.get('beer').rating;
+    return Math.round(rating * 10) / 10;
+  }),
 });

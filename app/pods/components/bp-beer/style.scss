@@ -1,5 +1,5 @@
 .beer-page {
-  padding: 5% 25%;
+  padding: 5% 15%;
   display: grid;
   grid-template-columns: auto auto;
   align-items: center;
@@ -52,11 +52,29 @@
 
     p {
       font-size: large;
-      letter-spacing: 2px;
+
+      .info-highlighted-text {
+        color: red;
+        font-weight: bold;
+      }
+    }
+
+    .item {
+      border: 1px solid lightgray;
+      padding: 10px 0;
+      text-align: center;
     }
 
     .rating {
       grid-area: rating;
+
+        .stars {
+          font-size: 30px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
     }
 
     .ibu {
@@ -67,16 +85,5 @@
       grid-area: percent;
     }
 
-    .item {
-      border: 1px solid lightgray;
-      padding: 15px;
-      text-align: center;
-    }
-
-    .info-highlighted-text {
-      color: red;
-      font-weight: bold;
-      font-size: large;
-    }
   }
 }

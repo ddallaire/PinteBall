@@ -25,7 +25,8 @@
   <div>
     <div class="beer-numerical-info">
       <div class="item rating">
-        <p><span class="info-highlighted-text">{{beer.rating}}</span>/5</p>
+        <div class="stars">{{bp-stars-display rating=beer.rating}}</div>
+        <p><span class="info-highlighted-text">{{beerRating}}</span>/5 (X reviews)</p>
       </div>
       <div class="item ibu">
         <p>IBU: <span class="info-highlighted-text">{{beer.ibu}}</span></p>
