@@ -1,7 +1,7 @@
 <div class="beers-container">
     <h1>Beers</h1>
     {{#bp-table table=table as |beer|}}
-        {{#bp-beer-card 
+        {{#bp-beer-card
             title=beer.name
             type="English pale ale"
             brewery=(array-join beer.breweries)
