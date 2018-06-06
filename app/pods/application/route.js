@@ -7,10 +7,17 @@ export default Route.extend({
   beforeModel(transition) {
     if (!this.get('session').isAuthenticated) {
       if (transition.queryParams['ticket']) {
-        this.get('session').validateTicket(transition.queryParams['ticket']);
+        const authResult = this.get('session').validateTicket(transition.queryParams['ticket']);
+        authResult.then(result => {
+          if (result) {
+            this.transitionTo('home');
+          }
+        });
       } else {
         this.get('session').redirectToCas();
       }
+    } else if (transition.intent.url == '/') {
+      this.transitionTo('home');
     }
   }
 });

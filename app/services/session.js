@@ -2,9 +2,12 @@ import {computed} from '@ember/object';
 import {readOnly} from '@ember/object/computed';
 import Service, {inject as service} from '@ember/service';
 import config from 'pinte-ball/config/environment';
-import fetch from 'fetch';
+
+import ticketValidationMutation from 'pinte-ball/queries/mutations/login';
+import logoutMutation from 'pinte-ball/queries/mutations/logout';
 
 export default Service.extend({
+  apollo: service('apollo'),
   sessionFetcher: service('session/fetcher'),
   sessionPersister: service('session/persister'),
   sessionDestroyer: service('session/destroyer'),
@@ -28,26 +31,22 @@ export default Service.extend({
   },
 
   validateTicket(ticket) {
-    const validateUrl = `${config.APP.CAS.CORS}/${config.APP.CAS.SERVER}/serviceValidate?service=${encodeURIComponent(config.APP.CAS.CLIENT)}&ticket=${ticket}`;
-
-    const validation = fetch(validateUrl).then(function(response) {
-      return response.text().then(function(text) {
-        const xmlData = new window.DOMParser().parseFromString(text, "application/xml");
-        const credentials = {
-          cip: xmlData.getElementsByTagName('cas:cip')[0].textContent,
-          firstName: xmlData.getElementsByTagName('cas:prenom')[0].textContent,
-          lastName: xmlData.getElementsByTagName('cas:nomFamille')[0].textContent
+    return this.apollo.client.mutate({mutation: ticketValidationMutation, variables: {ticket}})
+      .then(credentials => {
+        const userCredentials = {
+          cip: credentials.data.login.cip,
+          name: credentials.data.login.name,
+          surname: credentials.data.login.surname,
+          token: credentials.data.login.token
         };
-
-        return credentials;
+        this.set('credentials', userCredentials);
+        return true;
       });
-    });
-
-    validation.then(credentials => this.set('credentials', credentials));
   },
 
   logout() {
     this.sessionDestroyer.destroySession();
+    this.apollo.client.mutate({mutation: logoutMutation});
     window.location.replace(`${config.APP.CAS.SERVER}/logout`);
   }
 });
