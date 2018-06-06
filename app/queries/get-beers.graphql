@@ -1,5 +1,5 @@
 query Beers($skip: Int!, $first: Int!){
-  beers(skip: $skip, first: $first, orderBy: NAME, orderType: ASC, breweries: [], tags: []) {
+  beers(skip: $skip, first: $first, orderBy: NAME, orderType: ASC, breweries: [], tags: [], styles: []) {
     id
     name
     description
@@ -13,5 +13,6 @@ query Beers($skip: Int!, $first: Int!){
       name
     }
     rating
+    style
   }
 }

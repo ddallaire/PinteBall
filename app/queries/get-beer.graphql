@@ -15,5 +15,6 @@ query Beer($beerId: Int!) {
       name
     }
     rating
+    style
   }
 }
