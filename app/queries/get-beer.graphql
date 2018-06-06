@@ -1,19 +1,19 @@
 query Beer($beerId: Int!) {
-    beer(id: $beerId) {
+  beer(id: $beerId) {
+    id
+    name
+    description
+    ibu
+    alcoholPercent
+    imagePath
+    breweries {
       id
       name
-      description
-      ibu
-      alcoholPercent
-      imagePath
-      breweries {
-        id
-        name
-      }
-      tags {
-        id
-        name
-      }
-      rating
     }
+    tags {
+      id
+      name
+    }
+    rating
+  }
 }

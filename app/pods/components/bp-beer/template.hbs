@@ -1,5 +1,5 @@
 <div class="beer-page">
-  <div>
+  <div class="column">
     <div class="beer-header">
       <img class="beer-logo" src="{{beer.imagePath}}" alt="image did not load" onerror='this.onerror=null; this.src="https://i.imgur.com/xG41sKc.jpg"'>
       <div class="beer-textual-info">
@@ -22,11 +22,11 @@
       </div>
     </div>
   </div>
-  <div>
+  <div class="column">
     <div class="beer-numerical-info">
       <div class="item rating">
         <div class="stars">{{bp-stars-display rating=beer.rating}}</div>
-        <p><span class="info-highlighted-text">{{beerRating}}</span>/5 (X reviews)</p>
+        <p><span class="info-highlighted-text">{{round-rating beer.rating}}</span>/5 (X reviews)</p>
       </div>
       <div class="item ibu">
         <p>IBU: <span class="info-highlighted-text">{{beer.ibu}}</span></p>
