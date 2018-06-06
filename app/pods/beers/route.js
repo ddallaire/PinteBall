@@ -1,8 +1,10 @@
 import Route from '@ember/routing/route';
-import RouteQueryManager from 'ember-apollo-client/mixins/route-query-manager';
 import query from 'pinte-ball/queries/get-beers';
+import { inject as service } from '@ember/service';
 
-export default Route.extend(RouteQueryManager, {
+export default Route.extend({
+  apollo: service('apollo'),
+
   model() {
     let variables = {
       skip: 0,
