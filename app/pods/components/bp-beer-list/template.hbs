@@ -6,7 +6,8 @@
                 {{#each row as |beer|}}
                     {{#if beer}}
                         <div class="column">
-                            {{#bp-beer-card 
+                            {{#bp-beer-card
+                                id = beer.id
                                 title=beer.name
                                 type="English pale ale"
                                 brewery=beer.brewery.name
