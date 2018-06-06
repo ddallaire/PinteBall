@@ -4,7 +4,7 @@
         {{#bp-beer-card 
             title=beer.name
             type="English pale ale"
-            brewery=beer.breweries.0.name
+            brewery=(array-join beer.breweries)
             ibu=beer.ibu
             alcool=beer.alcoholPercent
             rating=beer.rating
