@@ -5,10 +5,7 @@
       <div class="beer-textual-info">
         <h2 class="beer-name">{{beer.name}}</h2>
         <p class="beer-type-breweries">
-          Piss water |
-          {{#each beer.breweries as |brewery|}}
-            {{brewery.name}}
-          {{/each}}
+          Piss water | {{array-join beer.breweries}}
         </p>
         <p class="beer-description">
           {{beer.description}}
