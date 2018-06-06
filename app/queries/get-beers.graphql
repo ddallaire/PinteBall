@@ -1,26 +1,17 @@
 query Beers($skip: Int!, $first: Int!){
-	beers(skip: $skip, first: $first, orderBy: NAME, orderType: ASC, breweries: [], tags: []) {
-		id
-		name
-		description
-		ibu
-		alcoholPercent
-		imagePath
-		breweries {
-			id
-			name
-			description
-			imagePath
-			tags {
-			  id
-			  name
-			}
-			rating
-		}
-		tags {
-			id
-			name
-		}
-		rating
-	}
+  beers(skip: $skip, first: $first, orderBy: NAME, orderType: ASC, breweries: [], tags: []) {
+    id
+    name
+    description
+    ibu
+    alcoholPercent
+    imagePath
+    breweries {
+      name
+    }
+    tags {
+      name
+    }
+    rating
+  }
 }
