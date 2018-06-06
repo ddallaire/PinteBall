@@ -2,6 +2,9 @@
 
 module.exports = function(environment) {
   let ENV = {
+    apollo: {
+      apiURL: "http://localhost:3000/graphql"
+    },
     modulePrefix: 'pinte-ball',
     podModulePrefix: 'pinte-ball/pods',
     environment,
@@ -19,9 +22,21 @@ module.exports = function(environment) {
     },
 
     APP: {
-      //Environment variables go here
+      CAS: {
+        CLIENT: 'http://localhost:4200',
+        SERVER: 'https://cas.usherbrooke.ca',
+        CORS: 'https://cors-anywhere.herokuapp.com'
+      },
+
+      LOCAL_STORAGE: {
+        SESSION_NAMESPACE: 'pinte-ball-session'
+      }
     }
   };
+
+  ENV.contentSecurityPolicy = {
+    'connect-src': "'self' https://cas.usherbrooke.ca"
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
