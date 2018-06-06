@@ -1,0 +1,8 @@
+mutation login($ticket: String!) {
+  login(ticket: $ticket) {
+    cip
+    name
+    surname
+    token
+  }
+}
