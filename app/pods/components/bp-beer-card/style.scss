@@ -1,0 +1,82 @@
+.beer-card-wrapper {
+    .beer-card {
+        height: 150px;
+        border: 1px solid gray;
+        border-right: 5px solid gray;
+        overflow: hidden;
+        width: 95%;
+        display: flex;
+        box-sizing: border-box;
+        transition: border 0.3s;
+        
+        .content-wrapper {
+            width: 70%;
+            padding: 15px 10px 15px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            h2 {
+                margin: 0;
+            }
+            
+            p {
+                margin: 0;
+            }
+
+            .beer-type-brewery {
+                font-size: x-small;
+                color: red;
+            }
+
+            .rating-wrapper {
+                height: 25%;
+                display: inline-flex;
+                >* {
+                    margin: 3px;
+                }
+                
+                p {
+                    display: inline;
+                }
+
+                .alcool, .ibu {
+                    p:last-child {
+                        color: red;
+                    }
+                }
+
+            }
+
+            .beer-description {
+                font-size: x-small;
+                padding-right: 40px;
+                display: inline-block;
+                width: inherit;
+                height: inherit;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: inherit;
+                max-height: 5.4em;
+                line-height: 1.8em;
+            }
+        }
+
+        .image-wrapper {
+            max-width: 30%;
+        }
+
+        img {
+            object-fit: scale-down;
+        }
+    }
+    
+    .beer-card:hover {
+        border-right: 25px solid red;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+}
