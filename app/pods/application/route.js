@@ -11,6 +11,8 @@ export default Route.extend({
         authResult.then(result => {
           if (result) {
             this.transitionTo('home');
+          } else {
+            this.get('session').redirectToCas();
           }
         });
       } else {

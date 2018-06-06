@@ -41,12 +41,15 @@ export default Service.extend({
         };
         this.set('credentials', userCredentials);
         return true;
+      })
+      .catch(error => {
+        return false;
       });
   },
 
   logout() {
     this.sessionDestroyer.destroySession();
     this.apollo.client.mutate({mutation: logoutMutation});
-    window.location.replace(`${config.APP.CAS.SERVER}/logout`);
+    window.location.replace(`${config.APP.CAS.SERVER}/logout?service=${encodeURIComponent(config.APP.CAS.CLIENT)}`);
   }
 });
