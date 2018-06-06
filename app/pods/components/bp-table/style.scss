@@ -1,0 +1,9 @@
+.row {
+        display: flex;
+        margin-bottom: 20px;
+    }
+
+.column {
+    max-width: 50%;
+    flex: 50%;
+}
