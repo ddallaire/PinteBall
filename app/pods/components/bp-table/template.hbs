@@ -1,13 +1,12 @@
 {{#each table as |row|}}
     <div class="row">
-
-                <div class="column">
         {{#each row as |item|}}
             {{#if item}}
-                   {{yield item}}
+              <div class="column">
+                    {{yield item}}
 
+              </div>
             {{/if}}
         {{/each}}
-         </div>
     </div>
 {{/each}}
