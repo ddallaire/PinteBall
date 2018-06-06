@@ -1,7 +1,7 @@
 .beer-page {
   padding: 5% 15%;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 70% auto;
   align-items: center;
   grid-gap: 20px;
 
@@ -12,7 +12,6 @@
     .beer-logo {
       max-width: 300px;
       max-height: 300px;
-      vertical-align: middle;
     }
 
     .beer-textual-info {
@@ -30,6 +29,7 @@
       .beer-description {
         margin-top: 10px;
         color: gray;
+        text-align: justify;
       }
     }
   }
