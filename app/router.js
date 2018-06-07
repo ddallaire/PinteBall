@@ -10,9 +10,10 @@ Router.map(function() {
   this.route('home');
   this.route('reviews');
   this.route('beers');
+  this.route('beers/show', { path: 'beers/:beer_id' });
   this.route('breweries');
   this.route('profile');
-  this.route('not-found', {path: '/*path'});
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;

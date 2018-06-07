@@ -1,19 +1,20 @@
 {{#bp-card
-    title=title
-    imagePath=imagePath
-    subheading=(concat type " | " brewery)
-    description=description
-    link=link
-    }}
-    <div class="footer-content">
-        <div class="stars">{{bp-stars-display rating=rating}}</div>
-            <div class="ibu">
-                <p>IBU: </p>
-                <p>{{ibu}}</p>
-            </div>
-            <div class="alcool">
-                <p>Alc:</p>
-                <p>{{alcool}} %</p>
-        </div>
+  beerId=beerId
+  title=title
+  imagePath=imagePath
+  subheading=(concat style " | " breweries)
+  description=description
+  link=link
+  }}
+  <div class="footer-content">
+    <div class="stars">{{bp-stars-display rating=rating}}</div>
+    <div class="ibu">
+      <p>IBU: </p>
+      <p>{{ibu}}</p>
     </div>
+    <div class="alcool">
+        <p>Alc:</p>
+        <p>{{alcool}} %</p>
+    </div>
+  </div>
 {{/bp-card}}
