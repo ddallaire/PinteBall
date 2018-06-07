@@ -1,0 +1,13 @@
+<div class="breweries-container">
+    <h1>Breweries</h1>
+    {{#bp-table table=table as |brewery|}}
+        {{#bp-brewery-card
+            title=brewery.name
+            type=(concat "#" brewery.tags.0.name)
+            rating=brewery.rating
+            description=brewery.description
+            imagePath=brewery.imagePath
+            link="profile"}}
+        {{/bp-brewery-card}}
+    {{/bp-table}}
+</div>

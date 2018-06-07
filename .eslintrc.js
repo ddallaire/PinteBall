@@ -15,6 +15,7 @@ module.exports = {
     browser: true
   },
   rules: {
+    "indent": ["error", 2]
   },
   overrides: [
     // node files

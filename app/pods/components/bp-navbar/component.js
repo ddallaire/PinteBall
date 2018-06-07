@@ -5,8 +5,8 @@ export default Component.extend({
   session: service('session'),
 
   actions: {
-      logOut() {
-        this.get('session').logout();
-      }
+    logOut() {
+      this.get('session').logout();
+    }
   }
 });
