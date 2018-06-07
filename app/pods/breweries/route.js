@@ -3,7 +3,6 @@ import query from 'pinte-ball/queries/get-breweries';
 import { inject as service } from '@ember/service';
 
 export default Route.extend({
-
   apollo: service('apollo'),
   model() {
     let variables = {
@@ -11,6 +10,6 @@ export default Route.extend({
       first: 10
     };
 
-    return this.get('apollo').query({query, variables});
+    return this.get('apollo').query({query, variables}, 'breweries');
   }
 });

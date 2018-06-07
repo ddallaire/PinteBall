@@ -1,17 +1,18 @@
 .footer-content {
-    height: 25%;
-    display: inline-flex;
-    >* {
-        margin: 3px;
-    }
+  height: 25%;
+  display: inline-flex;
 
-    p {
-        display: inline;
-    }
+  >* {
+    margin: 3px;
+  }
 
-    .alcool, .ibu {
-        p:last-child {
-            color: red;
-        }
+  p {
+    display: inline;
+  }
+
+  .alcool, .ibu {
+    p:last-child {
+      color: red;
     }
+  }
 }

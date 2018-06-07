@@ -1,9 +1,9 @@
-.row {
-        display: flex;
-        margin-bottom: 20px;
-    }
+& {
+  display: flex;
+  flex-wrap: wrap;
+}
 
-.column {
-    max-width: 50%;
-    flex: 50%;
+.item {
+  flex: 0 0 50%;
+  margin-bottom: 15px;
 }

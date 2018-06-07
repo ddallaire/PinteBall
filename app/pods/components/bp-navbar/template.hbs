@@ -1,10 +1,8 @@
-<div class="topnav">
-    {{#link-to "home"}}BeerPressure{{/link-to}}
-    <a href="#" {{action "logOut"}} class="sign-out"><i class="fa fa-sign-out"></i></a>
-    {{#link-to "profile"}}<i class="fa fa-user"></i>{{/link-to}}
-    {{#link-to "breweries"}}Breweries{{/link-to}}
-    {{#link-to "beers"}}Beers{{/link-to}}
-    {{#link-to "reviews"}}Reviews{{/link-to}}
-</div>
+{{#link-to "home"}}BeerPressure{{/link-to}}
+<a href="#" {{action "logOut"}} class="sign-out"><i class="fa fa-sign-out"></i></a>
+{{#link-to "profile"}}<i class="fa fa-user"></i>{{/link-to}}
+{{#link-to "breweries"}}Breweries{{/link-to}}
+{{#link-to "beers"}}Beers{{/link-to}}
+{{#link-to "reviews"}}Reviews{{/link-to}}
 
 {{yield}}
