@@ -1,11 +1,5 @@
-{{#each table as |row|}}
-    <div class="row">
-        {{#each row as |item|}}
-            {{#if item}}
-              <div class="column">
-                    {{yield item}}
-              </div>
-            {{/if}}
-        {{/each}}
-    </div>
+{{#each items as |item|}}
+  <div class="item">
+    {{yield item}}
+  </div>
 {{/each}}
