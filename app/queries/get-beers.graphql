@@ -13,6 +13,8 @@ query Beers($skip: Int!, $first: Int!){
       name
     }
     rating
-    style
+    style {
+      name
+    }
   }
 }
