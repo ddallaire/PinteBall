@@ -1,4 +1,3 @@
-import Component from '@ember/component';
 import ListComponent from 'pinte-ball/pods/components/bp-list/component';
 import { computed } from '@ember/object';
 
