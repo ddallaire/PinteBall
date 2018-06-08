@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('beers');
   this.route('beers/show', { path: 'beers/:beer_id' });
   this.route('breweries');
+  this.route('breweries/show', { path: 'breweries/:brewery_id' })
   this.route('profile');
   this.route('not-found', { path: '/*path' });
 });

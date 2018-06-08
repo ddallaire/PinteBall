@@ -3,8 +3,16 @@
     <img class="beer-logo" src="{{beer.imagePath}}" alt="image did not load" onerror="this.onerror=null; this.src='/assets/images/default-beer-image.jpg'">
     <div class="beer-textual-info">
       <h2 class="beer-name">{{beer.name}}</h2>
+      <div class="breweries">
+        {{#each beer.breweries as |brewery|}}
+          {{#link-to "breweries/show" brewery.id}}
+            <i class="fa fa-chevron-right"></i>
+            <p>{{brewery.name}}</p>
+          {{/link-to}}
+        {{/each}}
+      </div>
       <p class="beer-type-breweries">
-        {{beer.style.name}} | {{array-join beer.breweries}}
+        {{beer.style.name}}
       </p>
       <p class="beer-description">
         {{beer.description}}
