@@ -5,98 +5,12 @@
   align-items: center;
   grid-gap: 20px;
 
-  .beer-header {
-    display: flex;
-    align-items: center;
-
-    .beer-logo {
-      max-width: 300px;
-      max-height: 300px;
-    }
-
-    .beer-textual-info {
-      margin: 0 1%;
-
-      .beer-name {
-        margin: 0;
-      }
-
-      .beer-type-breweries {
-        color: red;
-        margin: 0;
-      }
-
-      .beer-description {
-        margin-top: 10px;
-        color: gray;
-        text-align: justify;
-      }
-
-      .breweries {
-        margin-top: 5px;
-        margin-bottom: 5px;
-        .fa {
-          font-size: small;
-        }
-
-        a {
-          text-decoration: none;
-        }
-
-        a:visited {
-          color: initial;
-        }
-
-        a:hover {
-          color: red;
-        }
-
-        a:active {
-          color:initial;
-        }
-
-        * {
-          display: inline;
-        }
-
-        p {
-          margin-left: -3px;
-          margin-right: 10px;
-        }
-      }
-    }
-  }
-
-  .beer-reviews {
-    margin-top: 50px;
-
-    .reviews {
-      border: 1px solid lightgray;
-    }
-  }
-
-
   .beer-numerical-info {
     display: grid;
     grid-template-areas:
     'rating rating'
     'ibu percent';
     padding: 10px;
-
-    p {
-      font-size: large;
-
-      .info-highlighted-text {
-        color: red;
-        font-weight: bold;
-      }
-    }
-
-    .item {
-      border: 1px solid lightgray;
-      padding: 10px 0;
-      text-align: center;
-    }
 
     .rating {
       grid-area: rating;
@@ -117,6 +31,5 @@
     .percent {
       grid-area: percent;
     }
-
   }
 }

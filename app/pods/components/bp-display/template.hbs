@@ -1,0 +1,27 @@
+
+<div class="header">
+  <img class="display-image" src="{{imagePath}}" alt="image did not load" onerror="this.onerror=null; this.src='{{backupImagePath}}'">
+  <div class="textual-info">
+    <h2 class="display-name">{{name}}</h2>
+    <p class="tags">
+      {{array-join tags}}
+    </p>
+    <p class="description">
+      {{description}}
+    </p>
+    <div class="items">
+      {{#each items as |item|}}
+        {{#link-to "beers/show" item.id}}
+          <i class="fa fa-chevron-right"></i>
+          <p>{{item.name}}</p>
+        {{/link-to}}
+      {{/each}}
+    </div>
+  </div>
+</div>
+<div class="reviews">
+  <h2>Recent reviews</h2>
+  <div>
+    Reviews go here
+  </div>
+</div>

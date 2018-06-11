@@ -1,0 +1,70 @@
+& {
+  .header {
+    display: flex;
+    align-items: center;
+
+    .display-image {
+      max-width: 300px;
+      max-height: 300px;
+    }
+
+    .logo {
+      max-width: 300px;
+      max-height: 300px;
+    }
+
+    .textual-info {
+      margin: 0 1%;
+
+      .name {
+        margin: 0;
+      }
+
+      .tags {
+        color: red;
+        margin: 0;
+      }
+
+      .description {
+        margin-top: 10px;
+        color: gray;
+        text-align: justify;
+      }
+
+      .items {
+        a {
+          text-decoration: none;
+        }
+
+        a:visited {
+          color: initial;
+        }
+
+        a:hover {
+          color: red;
+        }
+
+        a:active {
+          color:#0000FF;
+        }
+
+        * {
+          display: inline;
+        }
+
+        p {
+          margin-left: -3px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .reviews {
+    margin-top: 50px;
+
+    div {
+      border: 1px solid lightgray;
+    }
+  }
+}
