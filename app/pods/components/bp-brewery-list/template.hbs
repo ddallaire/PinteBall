@@ -2,10 +2,11 @@
 {{#bp-table items=breweries as |brewery|}}
   {{#bp-brewery-card
     title=brewery.name
+    breweryId=brewery.id
     type=(concat "#" brewery.tags.0.name)
     rating=brewery.rating
     description=brewery.description
     imagePath=brewery.imagePath
-    link="profile"}}
+    link="breweries/show"}}
   {{/bp-brewery-card}}
 {{/bp-table}}
