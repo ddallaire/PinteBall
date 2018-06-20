@@ -1,0 +1,20 @@
+<div class="column">
+  {{bp-display
+    imagePath=brewery.imagePath
+    name=brewery.name
+    tags=brewery.tags
+    description=brewery.description
+    items=beers
+    tagLink="beers/show"
+    roundedImage=true
+  }}
+</div>
+
+<div class="column">
+  <div class="brewery-numerical-info">
+    <div class="rating">
+      <div class="stars">{{bp-stars-display rating=brewery.rating}}</div>
+      <p><span class="info-highlighted-text">{{round-rating brewery.rating}}</span>/5 (X reviews)</p>
+    </div>
+  </div>
+</div>

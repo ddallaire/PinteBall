@@ -1,26 +1,16 @@
 <div class="column">
-  <div class="beer-header">
-    <img class="beer-logo" src="{{beer.imagePath}}" alt="image did not load" onerror="this.onerror=null; this.src='/assets/images/default-beer-image.jpg'">
-    <div class="beer-textual-info">
-      <h2 class="beer-name">{{beer.name}}</h2>
-      <p class="beer-type-breweries">
-        {{beer.style.name}} | {{array-join beer.breweries}}
-      </p>
-      <p class="beer-description">
-        {{beer.description}}
-      </p>
-    </div>
-  </div>
-  <div class="beer-reviews">
-    <h2>Recent reviews</h2>
-    <div class="reviews">
-      Reviews go here
-    </div>
-  </div>
+  {{bp-display
+    imagePath=beer.imagePath
+    name=beer.name
+    tags=beer.tags
+    description=beer.description
+    items=beer.breweries
+    tagLink="breweries/show"
+  }}
 </div>
 <div class="column">
   <div class="beer-numerical-info">
-    <div class="item rating">
+    <div class="rating">
       <div class="stars">{{bp-stars-display rating=beer.rating}}</div>
       <p><span class="info-highlighted-text">{{round-rating beer.rating}}</span>/5 (X reviews)</p>
     </div>

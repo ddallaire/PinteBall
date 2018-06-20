@@ -5,23 +5,26 @@
   align-items: center;
   grid-gap: 20px;
 
-  .beer-numerical-info {
-    display: grid;
-    grid-template-areas:
-    'rating rating'
-    'ibu percent';
-    padding: 10px;
+  .brewery-numerical-info {
+    p {
+      font-size: large;
+
+      .info-highlighted-text {
+        color: red;
+        font-weight: bold;
+      }
+    }
 
     .rating {
       grid-area: rating;
 
-        .stars {
-          font-size: 30px;
-        }
+      .stars {
+        font-size: 30px;
+      }
 
-        p {
-            margin: 5px 0;
-        }
+      p {
+          margin: 5px 0;
+      }
     }
 
     .ibu {
