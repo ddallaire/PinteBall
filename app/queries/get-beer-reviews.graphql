@@ -1,0 +1,20 @@
+query BeerReviews($skip: Int!, $first: Int!, $beers: [Int!], $cips: [String!]) {
+  beerReviews(skip: $skip, first: $first, orderBy: TIME, orderType: ASC, beers: $beers, cips: $cips) {
+    idBeerReview
+    user {
+      name
+      surname
+    }
+    title
+    content
+    imagePath
+    rating
+    time
+    thumbsups {
+      user {
+        name
+        surname
+      }
+    }
+  }
+}

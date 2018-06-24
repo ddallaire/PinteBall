@@ -1,0 +1,33 @@
+& {
+  margin-bottom: 5%;
+
+  .display-image {
+    max-width: 300px;
+    max-height: 300px;
+    margin-right: 5px;
+  }
+
+  .header {
+    display: block;
+
+    h3 {
+      margin-bottom: 0;
+    }
+
+    .title {
+      div {
+        display: inline;
+        justify-content: flex-start;
+      }
+    }
+
+    .infos {
+      margin: 5px 0;
+    }
+  }
+
+  .content {
+    margin: 20px 0;
+    text-align: justify;
+  }
+}
