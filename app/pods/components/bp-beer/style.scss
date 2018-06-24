@@ -12,6 +12,15 @@
     'ibu percent';
     padding: 10px;
 
+    p {
+      font-size: large;
+
+      .info-highlighted-text {
+        color: red;
+        font-weight: bold;
+      }
+    }
+
     .rating {
       grid-area: rating;
 
