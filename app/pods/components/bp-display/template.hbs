@@ -1,4 +1,4 @@
-<div class="infos">
+<div class="header-container">
   <div class="image-wrapper">
     {{#if roundedImage}}
       <img class="display-image rounded-image" src="{{imagePath}}" alt="Image did not load" onerror="this.onerror=null; this.src='/assets/images/default-beer-image.jpg'">
@@ -6,36 +6,38 @@
       <img class="display-image" src="{{imagePath}}" alt="Image did not load" onerror="this.onerror=null; this.src='/assets/images/default-beer-image.jpg'">
     {{/if}}
   </div>
-  <div class="textual-info">
-    <h2 class="display-name">{{name}}</h2>
-    <p class="tags">
-      {{array-join tags}}
-    </p>
-    <p class="description">
-      {{description}}
-    </p>
-    <div class="items">
-      {{#each items as |item|}}
-        {{#link-to tagLink item.id}}
-          <i class="fa fa-chevron-right"></i>
-          <p>{{item.name}}</p>
-        {{/link-to}}
-      {{/each}}
+  <div class="infos">
+    <div class="textual-info">
+      <h2 class="display-name">{{name}}</h2>
+      <p class="tags">
+        {{array-join tags}}
+      </p>
+      <p class="description">
+        {{description}}
+      </p>
+      <div class="items">
+        {{#each items as |item|}}
+          {{#link-to tagLink item.id}}
+            <i class="fa fa-chevron-right"></i>
+            <p>{{item.name}}</p>
+          {{/link-to}}
+        {{/each}}
+      </div>
     </div>
-  </div>
-  <div class="numerical-info">
-    <div class="rating">
-      <div class="stars">{{bp-stars-display rating=rating}}</div>
-      <p><span class="info-highlighted-text">{{round-rating rating}}</span>/5 ({{reviews.length}} review(s))</p>
+    <div class="numerical-info">
+      <div class="rating">
+        <div class="stars">{{bp-stars-display rating=rating}}</div>
+        <p><span class="info-highlighted-text">{{round-rating rating}}</span>/5 ({{reviews.length}} review(s))</p>
+      </div>
+      {{#if ibu}}
+      <div class="item ibu">
+        <p>IBU: <span class="info-highlighted-text">{{ibu}}</span></p>
+      </div>
+      <div class="item percent">
+        <p>%: <span class="info-highlighted-text">{{alcoholPercent}}%</span></p>
+      </div>
+      {{/if}}
     </div>
-    {{#if ibu}}
-    <div class="item ibu">
-      <p>IBU: <span class="info-highlighted-text">{{ibu}}</span></p>
-    </div>
-    <div class="item percent">
-      <p>%: <span class="info-highlighted-text">{{alcoholPercent}}%</span></p>
-    </div>
-    {{/if}}
   </div>
 </div>
 <div class="reviews">

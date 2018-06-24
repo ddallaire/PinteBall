@@ -2,10 +2,10 @@
   display: flex;
   flex-direction: column;
 
-  .infos {
+  .header-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
 
     .image-wrapper {
@@ -26,6 +26,12 @@
     .display-name {
       margin-bottom: 5px;
     }
+
+    .infos {
+      display: flex;
+      justify-content: space-between;
+      width: 40vw;
+      flex-wrap: wrap;
 
     .textual-info {
       margin: 0 1%;
@@ -112,6 +118,7 @@
       }
     }
   }
+}
 
   .reviews {
     margin-top: 5%;
