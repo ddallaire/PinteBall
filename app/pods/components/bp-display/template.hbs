@@ -27,14 +27,16 @@
     <div class="numerical-info">
       <div class="rating">
         <div class="stars">{{bp-stars-display rating=rating}}</div>
-        <p><span class="info-highlighted-text">{{round-rating rating}}</span>/5 (X review(s))</p>
+        <p class="rating-text"><span class="info-highlighted-text">{{round-rating rating}}</span>/5 (X review(s))</p>
       </div>
       {{#if ibu}}
-      <div class="item ibu">
-        <p>IBU: <span class="info-highlighted-text">{{ibu}}</span></p>
-      </div>
-      <div class="item percent">
-        <p>%: <span class="info-highlighted-text">{{alcoholPercent}}%</span></p>
+      <div class="ibu-percent-container">
+        <div class="item ibu">
+          <p>IBU: <span class="info-highlighted-text">{{ibu}}</span></p>
+        </div>
+        <div class="item percent">
+          <p>%: <span class="info-highlighted-text">{{alcoholPercent}}%</span></p>
+        </div>
       </div>
       {{/if}}
     </div>

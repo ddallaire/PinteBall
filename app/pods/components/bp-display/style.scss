@@ -1,12 +1,13 @@
 & {
   display: flex;
   flex-direction: column;
+  padding: 5% 20%;
 
   .header-container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 
     .image-wrapper {
       .display-image {
@@ -24,13 +25,13 @@
     }
 
     .display-name {
-      margin-bottom: 5px;
+      margin: 0;
     }
 
     .infos {
       display: flex;
       justify-content: space-between;
-      width: 40vw;
+      width: 100%;
       flex-wrap: wrap;
 
     .textual-info {
@@ -82,11 +83,8 @@
     }
 
     .numerical-info {
-      display: grid;
-      grid-template-areas:
-      'rating rating'
-      'ibu percent';
-      padding: 10px;
+      display: flex;
+      flex-direction: column;
 
       p {
         font-size: large;
@@ -98,23 +96,22 @@
       }
 
       .rating {
-        grid-area: rating;
+        display: flex;
+        flex-direction: row;
 
           .stars {
             font-size: 30px;
           }
 
-          p {
-              margin: 5px 0;
+          .rating-text {
+              margin: 8px 0 0 10px;
           }
       }
 
-      .ibu {
-        grid-area: ibu;
-      }
-
-      .percent {
-        grid-area: percent;
+      .ibu-percent-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
       }
     }
   }
