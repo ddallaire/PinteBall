@@ -1,5 +1,4 @@
-
-<div class="header">
+<div class="infos">
   <div class="image-wrapper">
     {{#if roundedImage}}
       <img class="display-image rounded-image" src="{{imagePath}}" alt="Image did not load" onerror="this.onerror=null; this.src='/assets/images/default-beer-image.jpg'">
@@ -24,10 +23,26 @@
       {{/each}}
     </div>
   </div>
+  <div class="numerical-info">
+    <div class="rating">
+      <div class="stars">{{bp-stars-display rating=rating}}</div>
+      <p><span class="info-highlighted-text">{{round-rating rating}}</span>/5 ({{reviews.length}} review(s))</p>
+    </div>
+    {{#if ibu}}
+    <div class="item ibu">
+      <p>IBU: <span class="info-highlighted-text">{{ibu}}</span></p>
+    </div>
+    <div class="item percent">
+      <p>%: <span class="info-highlighted-text">{{alcoholPercent}}%</span></p>
+    </div>
+    {{/if}}
+  </div>
 </div>
 <div class="reviews">
   <h2>Recent reviews</h2>
   <div>
-    Reviews go here
+    {{#each reviews as |review|}}
+      {{bp-review review=review}}
+    {{/each}}
   </div>
 </div>

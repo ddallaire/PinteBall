@@ -6,19 +6,9 @@
     description=beer.description
     items=beer.breweries
     tagLink="breweries/show"
+    reviews=reviews
+    rating=beer.rating
+    ibu=beer.ibu
+    alcoholPercent=beer.alcoholPercent
   }}
-</div>
-<div class="column">
-  <div class="beer-numerical-info">
-    <div class="rating">
-      <div class="stars">{{bp-stars-display rating=beer.rating}}</div>
-      <p><span class="info-highlighted-text">{{round-rating beer.rating}}</span>/5 (X reviews)</p>
-    </div>
-    <div class="item ibu">
-      <p>IBU: <span class="info-highlighted-text">{{beer.ibu}}</span></p>
-    </div>
-    <div class="item percent">
-      <p>%: <span class="info-highlighted-text">{{beer.alcoholPercent}}%</span></p>
-    </div>
-  </div>
 </div>

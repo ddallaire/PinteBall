@@ -1,10 +1,14 @@
 & {
-  .header {
+  display: flex;
+  flex-direction: column;
+
+  .infos {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 
     .image-wrapper {
-
       .display-image {
         max-width: 300px;
         max-height: 300px;
@@ -25,6 +29,7 @@
 
     .textual-info {
       margin: 0 1%;
+      max-width: 50%;
 
       .name {
         margin: 0;
@@ -69,13 +74,46 @@
         }
       }
     }
+
+    .numerical-info {
+      display: grid;
+      grid-template-areas:
+      'rating rating'
+      'ibu percent';
+      padding: 10px;
+
+      p {
+        font-size: large;
+
+        .info-highlighted-text {
+          color: red;
+          font-weight: bold;
+        }
+      }
+
+      .rating {
+        grid-area: rating;
+
+          .stars {
+            font-size: 30px;
+          }
+
+          p {
+              margin: 5px 0;
+          }
+      }
+
+      .ibu {
+        grid-area: ibu;
+      }
+
+      .percent {
+        grid-area: percent;
+      }
+    }
   }
 
   .reviews {
-    margin-top: 50px;
-
-    div {
-      border: 1px solid lightgray;
-    }
+    margin-top: 5%;
   }
 }
