@@ -3,7 +3,7 @@
     <h3>{{review.title}} {{bp-stars-display rating=review.rating}}</h3>
   </div>
   <div class="infos">
-    by {{review.user.name}} on {{review.time}}
+    by {{review.user.name}} on {{moment-calendar review.time 'days'}}
   </div>
 </div>
 <div class="content">
