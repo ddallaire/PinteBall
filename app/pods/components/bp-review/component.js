@@ -14,16 +14,21 @@ export default Component.extend({
       cips: []
     }
 
+    let query;
+    let responseName;
+
     if (this.get('type') === 'beer') {
       variables.beerReviews = [this.get('review.idBeerReview')];
-      Promise.resolve(this.get('apollo').query({ query: BeerReviewComments, variables }, 'beerReviewComments')).then(c => {
-        this.set('comments', c);
-      });
+      query = BeerReviewComments;
+      responseName = 'beerReviewComments'
     } else {
       variables.breweryReviews = [this.get('review.idBreweryReview')];
-      Promise.resolve(this.get('apollo').query({ query: BreweryReviewComments, variables }, 'breweryReviewComments')).then(c => {
-        this.set('comments', c);
-      });
+      query = BreweryReviewComments;
+      responseName = 'breweryReviewComments';
     }
+
+    Promise.resolve(this.get('apollo').query({ query, variables }, responseName)).then(c => {
+      this.set('comments', c);
+    });
   })
 });
