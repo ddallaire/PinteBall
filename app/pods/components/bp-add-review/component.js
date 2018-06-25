@@ -24,7 +24,7 @@ export default Component.extend({
         mutation = InsertBreweryReview;
       }
 
-      this.apollo.client.mutate({mutation, variables}).then(res => {
+      this.apollo.client.mutate({mutation, variables}).then(() => {
         // TODO: Find another way to update the page in real time?
         window.location.reload(true);
       });
