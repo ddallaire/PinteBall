@@ -1,6 +1,7 @@
 import Component from '@ember/component';
 import {inject as service} from '@ember/service';
 import InsertBeerReview from 'pinte-ball/queries/mutations/insert-beer-review';
+import InsertBreweryReview from 'pinte-ball/queries/mutations/insert-brewery-review';
 
 export default Component.extend({
   apollo: service('apollo'),
@@ -11,11 +12,19 @@ export default Component.extend({
         id: this.get('id') || '',
         title: this.get('title') || '',
         content: this.get('content') || '',
-        rating: this.get('rating') || '',
+        rating: this.get('rating') || 0,
         imagePath: this.get('imagePath') || ''
       }
 
-      this.apollo.client.mutate({mutation: InsertBeerReview, variables}).then(res => {
+      let mutation;
+
+      if (this.get('type') === 'beer') {
+        mutation = InsertBeerReview;
+      } else {
+        mutation = InsertBreweryReview;
+      }
+
+      this.apollo.client.mutate({mutation, variables}).then(res => {
         // TODO: Find another way to update the page in real time?
         window.location.reload(true);
       });
