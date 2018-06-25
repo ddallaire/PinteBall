@@ -14,3 +14,8 @@
     <img class="display-image" src="{{review.imagePath}}" alt="Image did not load" onerror="this.style.display='none'">
   {{/if}}
 </div>
+{{#if comments.length}}
+  {{#each comments as |comment|}}
+    {{bp-review-comment comment=comment}}
+  {{/each}}
+{{/if}}

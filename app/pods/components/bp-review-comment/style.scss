@@ -1,0 +1,20 @@
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-top: 20px;
+  width: 40%;
+
+  .content {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 25px;
+    background: rgb(245, 244, 244);
+    padding: 10px 20px;
+  }
+
+  .infos {
+    font-size: 12px;
+    margin: 5% 0 0;
+  }
+}
