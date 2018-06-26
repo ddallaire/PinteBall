@@ -1,0 +1,5 @@
+mutation InsertBreweryReviewComment($id: Int!, $content: String!) {
+  insertBreweryReviewComment(idBreweryReview: $id, content: $content) {
+    content
+  }
+}

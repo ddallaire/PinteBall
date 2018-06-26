@@ -1,0 +1,17 @@
+.review-comment-form {
+  margin-top: 20px;
+
+  input {
+    border-radius: 50px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .review-comment-content {
+    width: 50%;
+  }
+}

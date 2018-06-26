@@ -6,6 +6,12 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   apollo: service('apollo'),
+  displayAddComment: false,
+  actions: {
+    showAddComment: function() {
+      this.toggleProperty('displayAddComment');
+    }
+  },
   comments: computed('review', function() {
     let variables = {
       skip: 0,
@@ -20,7 +26,7 @@ export default Component.extend({
     if (this.get('type') === 'beer') {
       variables.beerReviews = [this.get('review.idBeerReview')];
       query = BeerReviewComments;
-      responseName = 'beerReviewComments'
+      responseName = 'beerReviewComments';
     } else {
       variables.breweryReviews = [this.get('review.idBreweryReview')];
       query = BreweryReviewComments;
