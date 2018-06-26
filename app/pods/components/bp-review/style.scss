@@ -36,4 +36,14 @@
     padding: 10px 20px;
     width: 50%;
   }
+
+  .comment {
+    margin-top: 5px;
+    font-size: small;
+  }
+
+  .comment:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }

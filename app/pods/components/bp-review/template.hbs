@@ -14,8 +14,16 @@
     <img class="display-image" src="{{review.imagePath}}" alt="Image did not load" onerror="this.style.display='none'">
   {{/if}}
 </div>
+<p class="comment" onclick={{action 'showAddComment'}}>Comment</p>
 {{#if comments.length}}
   {{#each comments as |comment|}}
     {{bp-review-comment comment=comment}}
   {{/each}}
+{{/if}}
+{{#if displayAddComment}}
+  {{#if review.idBeerReview}}
+    {{bp-add-review-comment type=type id=review.idBeerReview}}
+  {{else}}
+    {{bp-add-review-comment type=type id=review.idBreweryReview}}
+  {{/if}}
 {{/if}}
