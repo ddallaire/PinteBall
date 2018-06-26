@@ -1,0 +1,13 @@
+<div class="add-review-form">
+  <div class="title-rating">
+    {{input type="text"  class="title" name="title" value=title placeholder="Title"}}
+    {{input type="number" name="rating" class="rating" value=rating min="0" max="5" placeholder="Rating"}}
+  </div>
+  <div class="content">
+    {{textarea type="text" name="content" value=content placeholder="Content"}}
+  </div>
+  <div class="image-path">
+    {{input type="text" name="imagePath" value=imagePath placeholder="Image path"}}
+  </div>
+  <button class="add-review" onclick={{action 'addReview'}}>Add review</button>
+</div>

@@ -42,6 +42,12 @@
     </div>
   </div>
 </div>
+<div>
+  <button onclick={{action 'showAddReview'}}>Rate it</button>
+  {{#if displayAddReview}}
+    {{bp-add-review type=type id=id}}
+  {{/if}}
+</div>
 <div class="reviews">
   <h2>Recent reviews</h2>
   <div>

@@ -1,0 +1,8 @@
+mutation InsertBreweryReview($id: Int!, $title: String!, $content: String!, $imagePath: String!, $rating: Float!) {
+  insertBreweryReview(idBrewery: $id, title: $title, content: $content, imagePath: $imagePath, rating: $rating) {
+    title
+    content
+    rating
+    imagePath
+  }
+}
