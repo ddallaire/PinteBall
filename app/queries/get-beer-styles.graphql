@@ -1,0 +1,6 @@
+query BeerStyles($skip: Int!, $first: Int!){
+  beerStyles(skip: $skip, first: $first, orderBy: NAME, orderType: ASC) {
+    id
+    name
+  }
+}

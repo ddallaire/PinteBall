@@ -1,8 +1,29 @@
 <h1>Beers</h1>
-{{#if (is-pending beersQuery)}}
-  <div class="loader-container">
+<div class="filters">
+  <h2>Filters</h2>
+  <h3>Styles</h3>
+  {{#if (is-pending beerStylesQuery)}}
     <img src="/assets/images/loader.gif">
-  </div>
+  {{else}}
+    {{multiselect-checkboxes
+      options=beerStyles
+      labelProperty='name'
+      selection=styleFilters
+    }}
+  {{/if}}
+  <h3>Tags</h3>
+  {{#if (is-pending beerTagsQuery)}}
+    <img src="/assets/images/loader.gif">
+  {{else}}
+    {{multiselect-checkboxes
+      options=beerTags
+      labelProperty='name'
+      selection=tagFilters
+    }}
+  {{/if}}
+</div>
+{{#if (is-pending beersQuery)}}
+  <img src="/assets/images/loader.gif">
 {{else}}
   {{#bp-table items=beers as |beer|}}
     {{#bp-beer-card
