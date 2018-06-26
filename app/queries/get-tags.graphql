@@ -1,0 +1,6 @@
+query Tags($skip: Int!, $first: Int!){
+  tags(skip: $skip, first: $first, orderBy: NAME, orderType: ASC) {
+    id
+    name
+  }
+}

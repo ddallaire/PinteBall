@@ -1,12 +1,29 @@
 <h1>Breweries</h1>
-{{#bp-table items=breweries as |brewery|}}
-  {{#bp-brewery-card
-    title=brewery.name
-    breweryId=brewery.id
-    type=(concat "#" brewery.tags.0.name)
-    rating=brewery.rating
-    description=brewery.description
-    imagePath=brewery.imagePath
-    link="breweries/show"}}
-  {{/bp-brewery-card}}
-{{/bp-table}}
+<div class="filters">
+  <h2>Filters</h2>
+  <h3>Tags</h3>
+  {{#if (is-pending breweriesTagsQuery)}}
+    <img src="/assets/images/loader.gif">
+  {{else}}
+    {{multiselect-checkboxes
+      options=breweriesTags
+      labelProperty='name'
+      selection=tagFilters
+    }}
+  {{/if}}
+</div>
+{{#if (is-pending breweriesQuery)}}
+  <img src="/assets/images/loader.gif">
+{{else}}
+  {{#bp-table items=breweries as |brewery|}}
+    {{#bp-brewery-card
+      title=brewery.name
+      breweryId=brewery.id
+      type=(concat "#" brewery.tags.0.name)
+      rating=brewery.rating
+      description=brewery.description
+      imagePath=brewery.imagePath
+      link="breweries/show"}}
+    {{/bp-brewery-card}}
+  {{/bp-table}}
+{{/if}}
