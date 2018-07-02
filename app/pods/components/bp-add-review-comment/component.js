@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import {inject as service} from '@ember/service';
+import { inject as service } from '@ember/service';
 import InsertBeerReviewComment from 'pinte-ball/queries/mutations/insert-beer-review-comment';
 import InsertBreweryReviewComment from 'pinte-ball/queries/mutations/insert-brewery-review-comment';
 
@@ -21,8 +21,7 @@ export default Component.extend({
       }
 
       this.apollo.client.mutate({mutation, variables}).then(() => {
-        // TODO: Find another way to update the page in real time?
-        window.location.reload(true);
+        this.get('onAddComment')();
       });
     }
   }

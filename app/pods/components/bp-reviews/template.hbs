@@ -1,0 +1,14 @@
+<h2>Recent reviews</h2>
+<button onclick={{action 'showAddReview'}}>Rate it</button>
+{{#if displayAddReview}}
+  {{bp-add-review type=type beerOrBreweryId=beerOrBreweryId onAddReview=(action 'refetchReviews')}}
+{{/if}}
+<div>
+{{#if (is-pending reviewsQuery)}}
+  <img src="/assets/images/loader.gif">
+{{else}}
+  {{#each reviews as |review|}}
+    {{bp-review review=review type=type}}
+  {{/each}}
+{{/if}}
+</div>

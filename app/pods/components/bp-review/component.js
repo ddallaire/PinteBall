@@ -1,40 +1,52 @@
 import Component from '@ember/component';
+import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { getObservable } from 'ember-apollo-client';
 import BeerReviewComments from 'pinte-ball/queries/get-beer-review-comments';
 import BreweryReviewComments from 'pinte-ball/queries/get-brewery-review-comments';
-import { computed } from '@ember/object';
 
 export default Component.extend({
   apollo: service('apollo'),
   displayAddComment: false,
-  actions: {
-    showAddComment: function() {
-      this.toggleProperty('displayAddComment');
-    }
-  },
-  comments: computed('review', function() {
+
+  comments: null,
+
+  commentsQuery: computed(function() {
+    let query = null;
     let variables = {
       skip: 0,
       first: 50,
-
       cips: []
-    }
-
-    let query;
-    let responseName;
+    };
+    let queryResultName = '';
 
     if (this.get('type') === 'beer') {
-      variables.beerReviews = [this.get('review.idBeerReview')];
       query = BeerReviewComments;
-      responseName = 'beerReviewComments';
+      variables.beerReviews = [this.get('review.idBeerReview')];
+      queryResultName = 'beerReviewComments';
     } else {
-      variables.breweryReviews = [this.get('review.idBreweryReview')];
       query = BreweryReviewComments;
-      responseName = 'breweryReviewComments';
+      variables.breweryReviews = [this.get('review.idBreweryReview')];
+      queryResultName = 'breweryReviewComments';
     }
 
-    Promise.resolve(this.get('apollo').query({ query, variables }, responseName)).then(c => {
-      this.set('comments', c);
+    return this.get('apollo').watchQuery({
+      query,
+      variables
+    }, queryResultName).then(result => {
+      this.set('comments', result);
     });
-  })
+  }),
+
+
+  actions: {
+    showAddComment: function() {
+      this.toggleProperty('displayAddComment');
+    },
+
+    refetchComments() {
+      this.toggleProperty('displayAddComment');
+      getObservable(this.get('comments')).refetch();
+    }
+  },
 });
