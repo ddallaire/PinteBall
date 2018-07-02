@@ -15,15 +15,19 @@
   {{/if}}
 </div>
 <p class="comment" onclick={{action 'showAddComment'}}>Comment</p>
-{{#if comments.length}}
-  {{#each comments as |comment|}}
-    {{bp-review-comment comment=comment}}
-  {{/each}}
+{{#if (is-pending commentsQuery)}}
+  <img src="/assets/images/loader.gif">
+{{else}}
+  {{#if comments.length}}
+    {{#each comments as |comment|}}
+      {{bp-review-comment comment=comment}}
+    {{/each}}
+  {{/if}}
 {{/if}}
 {{#if displayAddComment}}
   {{#if review.idBeerReview}}
-    {{bp-add-review-comment type=type id=review.idBeerReview}}
+    {{bp-add-review-comment type=type id=review.idBeerReview onAddComment=(action 'refetchComments')}}
   {{else}}
-    {{bp-add-review-comment type=type id=review.idBreweryReview}}
+    {{bp-add-review-comment type=type id=review.idBreweryReview onAddComment=(action 'refetchComments')}}
   {{/if}}
 {{/if}}

@@ -42,17 +42,4 @@
     </div>
   </div>
 </div>
-<div>
-  <button onclick={{action 'showAddReview'}}>Rate it</button>
-  {{#if displayAddReview}}
-    {{bp-add-review type=type id=beerOrBreweryid}}
-  {{/if}}
-</div>
-<div class="reviews">
-  <h2>Recent reviews</h2>
-  <div>
-    {{#each reviews as |review|}}
-      {{bp-review review=review type=type}}
-    {{/each}}
-  </div>
-</div>
+{{bp-reviews beerOrBreweryId=beerOrBreweryId type=type}}
