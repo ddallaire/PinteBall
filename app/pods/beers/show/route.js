@@ -6,11 +6,9 @@ export default Route.extend({
   apollo: service('apollo'),
 
   model(params) {
-    const beerVariables = {
+    return this.get('apollo').query({ query: Beer, variables: {
       beerId: params.beer_id
-    }
-
-    return this.get('apollo').query({ query: Beer, variables: beerVariables }, 'beer');
+    }}, 'beer');
   }
 });
 
