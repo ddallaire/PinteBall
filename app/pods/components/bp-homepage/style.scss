@@ -1,0 +1,39 @@
+& {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+.search-wrapper {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 70px;
+  background-image: url("/assets/images/beer-background.png");
+  background-size: cover;
+
+  input {
+    width: 60%;
+    border: none;
+    border-bottom: 2px solid black;
+    font-size: 26px;
+    background: none;
+  }
+}
+
+.trending-wrapper {
+  height: 60%;
+
+  .trending-menu {
+    h1 {
+      margin-right: 50px;
+    }
+
+    > * {
+      display: inline;
+      text-decoration: none;
+      color: black;
+    }
+  }
+}
