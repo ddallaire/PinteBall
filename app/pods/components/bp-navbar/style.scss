@@ -17,7 +17,6 @@
 
   a:hover {
     background-color: darkgrey;
-    border-radius: 4px;
   }
 
   :first-child {
@@ -26,5 +25,10 @@
 
   .sign-out {
     margin-left: 30px;
+  }
+
+  .logo {
+    width: 220px;
+    height: 23px;
   }
 }
