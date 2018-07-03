@@ -6,6 +6,12 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     apollo: {
       include: ['apollo-link-error']
+    },
+
+    'ember-bootstrap': {
+      'bootstrapVersion': 4,
+      'importBootstrapFont': false,
+      'importBootstrapCSS': false
     }
   });
 

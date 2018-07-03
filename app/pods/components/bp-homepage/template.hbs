@@ -1,12 +1,62 @@
-<div class="search-wrapper">
-  <input type="text" placeholder="Search a beer, brewer or profile">
-</div>
+<h1>Trending</h1>
 
-<div class="trending-wrapper">
-  <div class="trending-menu">
-    <h1>Trending</h1>
-    {{bp-menu-item name="REVIEWS" owner=this selectedItem=selectedItem}}
-    {{bp-menu-item name="BEERS" owner=this selectedItem=selectedItem}}
-    {{bp-menu-item name="BREWERIES" owner=this selectedItem=selectedItem}}
-  </div>
-</div>
+{{#bs-tab as |tab|}}
+  {{#tab.pane title="Beers"}}
+    <div class="content-wrapper">
+      {{#if (is-pending beersQuery)}}
+        <img src="/assets/images/loader.gif">
+      {{else}}
+          {{#bp-table items=beers as |beer|}}
+            {{#bp-beer-card
+              beerId=beer.id
+              title=beer.name
+              style=beer.style.name
+              breweries=(array-join beer.breweries)
+              ibu=beer.ibu
+              alcool=beer.alcoholPercent
+              rating=beer.rating
+              description=beer.description
+              imagePath=beer.imagePath
+              link="beers/show"}}
+            {{/bp-beer-card}}
+          {{/bp-table}}
+      {{/if}}
+    </div>
+  {{/tab.pane}}
+  {{#tab.pane title="Breweries"}}
+    {{#if (is-pending breweriesQuery)}}
+        <img src="/assets/images/loader.gif">
+    {{else}}
+      {{#bp-table items=breweries as |brewery|}}
+        {{#bp-brewery-card
+          title=brewery.name
+          breweryId=brewery.id
+          type=(concat "#" brewery.tags.0.name)
+          rating=brewery.rating
+          description=brewery.description
+          imagePath=brewery.imagePath
+          link="breweries/show"}}
+        {{/bp-brewery-card}}
+      {{/bp-table}}
+    {{/if}}
+  {{/tab.pane}}
+  {{#tab.pane title="Reviews"}}
+    {{#if (is-pending reviewsQuery)}}
+        <img src="/assets/images/loader.gif">
+    {{else}}
+      {{#bp-table items=reviews as |review|}}
+        {{#bp-review-card
+          title=review.title
+          reviewId=review.idBeerReview
+          beerId=review.idBeer
+          rating=review.rating
+          description=review.content
+          user=review.user
+          imagePath=review.imagePath
+          thumbsups=review.thumbsups.length
+          link="beers/show"}}
+        {{/bp-review-card}}
+      {{/bp-table}}
+    {{/if}}
+  {{/tab.pane}}
+{{/bs-tab}}

@@ -1,39 +1,18 @@
 & {
-    display: flex;
-    flex-direction: column;
-    height: 90vh;
+  padding: 40px;
 }
 
-.search-wrapper {
-  height: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 70px;
-  background-image: url("/assets/images/beer-background.png");
-  background-size: cover;
+.content-wrapper {
+  padding-top: 20px;
+}
 
-  input {
-    width: 60%;
-    border: none;
-    border-bottom: 2px solid black;
-    font-size: 26px;
-    background: none;
+.thumbsup {
+  display: inline-flex;
+
+  .fa {
+    padding-left: 5px;
+    padding-top: 4px;
+    color: red;
   }
 }
 
-.trending-wrapper {
-  height: 60%;
-
-  .trending-menu {
-    h1 {
-      margin-right: 50px;
-    }
-
-    > * {
-      display: inline;
-      text-decoration: none;
-      color: black;
-    }
-  }
-}
