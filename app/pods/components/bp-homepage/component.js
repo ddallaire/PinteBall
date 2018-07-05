@@ -14,6 +14,29 @@ export default Component.extend({
   beers: null,
   breweries: null,
   reviews: [],
+  showBeers: true,
+  showBreweries: false,
+  showReviews: false,
+
+  actions: {
+    showBeers: function() {
+      this.set('showBeers', true);
+      this.set('showBreweries', false);
+      this.set('showReviews', false);
+    },
+
+    showBreweries:  function() {
+      this.set('showBeers', false);
+      this.set('showBreweries', true);
+      this.set('showReviews', false);
+    },
+
+    showReviews: function() {
+      this.set('showBeers', false);
+      this.set('showBreweries', false);
+      this.set('showReviews', true);
+    }
+  },
 
   beersQuery: computed(function() {
     return this.get('apollo').query({

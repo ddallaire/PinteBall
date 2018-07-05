@@ -1,29 +1,37 @@
-<h1>Trending</h1>
+<div class="tab-header">
+  <h1>Trending</h1>
+  <li>
+    <a href="#" class="tab {{if showBeers 'active'}}" {{action 'showBeers'}}>Beers</a>
+    <a href="#" class="tab {{if showBreweries 'active'}}" {{action 'showBreweries'}}>Breweries</a>
+    <a href="#" class="tab {{if showReviews 'active'}}" {{action 'showReviews'}}>Reviews</a>
+  </li>
+</div>
 
-{{#bs-tab as |tab|}}
-  {{#tab.pane title="Beers"}}
+<div>
+  {{#if showBeers}}
     {{#if (is-pending beersQuery)}}
-      <img src="/assets/images/loader.gif">
+      {{bp-loading}}
     {{else}}
-        {{#bp-table items=beers as |beer|}}
-          {{#bp-beer-card
-            beerId=beer.id
-            title=beer.name
-            style=beer.style.name
-            breweries=(array-join beer.breweries)
-            ibu=beer.ibu
-            alcool=beer.alcoholPercent
-            rating=beer.rating
-            description=beer.description
-            imagePath=beer.imagePath
-            link="beers/show"}}
-          {{/bp-beer-card}}
-        {{/bp-table}}
+      {{#bp-table items=beers as |beer|}}
+        {{#bp-beer-card
+          beerId=beer.id
+          title=beer.name
+          style=beer.style.name
+          breweries=(array-join beer.breweries)
+          ibu=beer.ibu
+          alcool=beer.alcoholPercent
+          rating=beer.rating
+          description=beer.description
+          imagePath=beer.imagePath
+          link="beers/show"}}
+        {{/bp-beer-card}}
+      {{/bp-table}}
     {{/if}}
-  {{/tab.pane}}
-  {{#tab.pane title="Breweries"}}
+  {{/if}}
+
+  {{#if showBreweries}}
     {{#if (is-pending breweriesQuery)}}
-        <img src="/assets/images/loader.gif">
+      {{bp-loading}}
     {{else}}
       {{#bp-table items=breweries as |brewery|}}
         {{#bp-brewery-card
@@ -37,10 +45,12 @@
         {{/bp-brewery-card}}
       {{/bp-table}}
     {{/if}}
-  {{/tab.pane}}
-  {{#tab.pane title="Reviews"}}
+  {{/if}}
+
+
+  {{#if showReviews}}
     {{#if (is-pending reviewsQuery)}}
-        <img src="/assets/images/loader.gif">
+      {{bp-loading}}
     {{else}}
       {{#bp-table items=reviews as |review|}}
         {{#bp-review-card
@@ -56,5 +66,5 @@
         {{/bp-review-card}}
       {{/bp-table}}
     {{/if}}
-  {{/tab.pane}}
-{{/bs-tab}}
+  {{/if}}
+</div>

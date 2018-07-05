@@ -3,7 +3,7 @@
   <h2>Filters</h2>
   <h3>Styles</h3>
   {{#if (is-pending beerStylesQuery)}}
-    <img src="/assets/images/loader.gif">
+    {{bp-loading}}
   {{else}}
     {{multiselect-checkboxes
       options=beerStyles
@@ -13,7 +13,7 @@
   {{/if}}
   <h3>Tags</h3>
   {{#if (is-pending beerTagsQuery)}}
-    <img src="/assets/images/loader.gif">
+    {{bp-loading}}
   {{else}}
     {{multiselect-checkboxes
       options=beerTags
@@ -23,7 +23,7 @@
   {{/if}}
 </div>
 {{#if (is-pending beersQuery)}}
-  <img src="/assets/images/loader.gif">
+  {{bp-loading}}
 {{else}}
   {{#bp-table items=beers as |beer|}}
     {{#bp-beer-card

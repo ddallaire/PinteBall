@@ -2,8 +2,35 @@
   padding: 40px;
 }
 
-.content-wrapper {
-  padding-top: 20px;
+.tab-header {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+li {
+  list-style-type: none;
+  margin-left: 20px;
+  margin-bottom: 20px;
+
+  .active {
+    border-bottom: 3px solid red;
+  }
+
+  a {
+    text-decoration: none;
+    font-size: x-large;
+    color: black;
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  a:hover, a:visited {
+    text-decoration: none;
+  }
+
+  a:hover {
+    border-bottom: 3px solid red;
+  }
 }
 
 .thumbsup {
