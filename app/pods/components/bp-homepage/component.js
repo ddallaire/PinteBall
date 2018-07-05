@@ -1,6 +1,4 @@
 import Component from '@ember/component';
-import { observer } from '@ember/object';
-import { set } from '@ember/object';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import beersQuery from 'pinte-ball/queries/get-beers';
@@ -13,10 +11,15 @@ export default Component.extend({
   apollo: service('apollo'),
   beers: null,
   breweries: null,
-  reviews: [],
+  reviews: null,
   showBeers: true,
   showBreweries: false,
   showReviews: false,
+
+  init: function() {
+    this._super(...arguments);
+    this.set('reviews', []);
+  },
 
   actions: {
     showBeers: function() {
