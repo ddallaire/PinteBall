@@ -4,9 +4,9 @@
   imagePath=fallbackImagePath
   subheading=(concat "-" user.name ", " (moment-calendar time 'days'))
   description=description
-  link=link
+  type=type
   smallTitle=true
-  icon="beer"
+  link=(concat (if (is-eq type "beer") "beers") (if (is-eq type "brewery") "breweries") "/show")
   }}
   <div class="footer-content">
     <div class="stars">{{bp-stars-display rating=rating}}</div>

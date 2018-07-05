@@ -3,6 +3,7 @@ import { computed } from '@ember/object';
 
 export default Component.extend({
   fallbackImagePath: computed('imagePath', function() {
-    return this.get('imagePath') || "/assets/images/default-beer-image.jpg";
+    let fallbackImage = this.get('type') == "beer" ? "default-beer-image.jpg" : "default-brewery-image.jpg";
+    return this.get('imagePath') || "/assets/images/" + fallbackImage;
   })
 });

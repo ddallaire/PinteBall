@@ -16,13 +16,14 @@
 
       .title-wrapper {
         display: inline-flex;
+        align-items: center;
 
         .fa {
-          padding-top: 13px;
+          font-size: x-large;
           margin-right: 5px;
         }
 
-        h2, h6 {
+        h2, h4 {
           margin: 0;
         }
       }
@@ -31,7 +32,6 @@
         padding-top: 2px;
         margin-right: 2px;
       }
-
 
       p {
           margin: 0;
@@ -79,7 +79,6 @@
         display: none;
       }
     }
-
 
     img {
       object-fit: scale-down;
