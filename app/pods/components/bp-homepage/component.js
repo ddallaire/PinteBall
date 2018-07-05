@@ -7,14 +7,13 @@ import beersQuery from 'pinte-ball/queries/get-beers';
 import breweriesQuery from 'pinte-ball/queries/get-breweries';
 import beerReviewsQuery from 'pinte-ball/queries/get-beer-reviews';
 import breweryReviewsQuery from 'pinte-ball/queries/get-brewery-reviews';
+import moment from 'moment';
 
 export default Component.extend({
   apollo: service('apollo'),
   beers: null,
   breweries: null,
-  reviews: null,
-  beerReviews: null,
-  breweryReviews: null,
+  reviews: [],
 
   beersQuery: computed(function() {
     return this.get('apollo').query({
@@ -40,18 +39,17 @@ export default Component.extend({
         query: beerReviewsQuery,
         variables: {skip: 0, first: 10, beers: [], cips: []}
       }, "beerReviews").then(result => {
-        this.set('beerReviews', result);
+        this.set('reviews', [...this.get('reviews'), ...result]);
       }),
 
       this.get('apollo').query({
         query: breweryReviewsQuery,
         variables: {skip: 0, first: 10,  breweries: [], $cips: []}
       }, "breweryReviews").then(result => {
-        this.set('breweryReviews', result);
+        this.set('reviews', [...this.get('reviews'), ...result]);
       })
     ]).then(() => {
-      console.log("Test");
-      this.set('reviews', [...this.get('beerReviews'), ...this.get('breweryReviews')]);
+      this.set('reviews', [...this.get('reviews')].sort((a,b) => moment(b.time).diff(moment(a.time))));
     });
   })
 });

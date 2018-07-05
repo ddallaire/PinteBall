@@ -1,8 +1,8 @@
 {{#bp-card
-  cardId=beerId
+  cardId=targetId
   title=title
   imagePath=fallbackImagePath
-  subheading=(concat "-" user.name)
+  subheading=(concat "-" user.name ", " (moment-calendar time 'days'))
   description=description
   link=link
   smallTitle=true

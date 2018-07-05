@@ -2,26 +2,24 @@
 
 {{#bs-tab as |tab|}}
   {{#tab.pane title="Beers"}}
-    <div class="content-wrapper">
-      {{#if (is-pending beersQuery)}}
-        <img src="/assets/images/loader.gif">
-      {{else}}
-          {{#bp-table items=beers as |beer|}}
-            {{#bp-beer-card
-              beerId=beer.id
-              title=beer.name
-              style=beer.style.name
-              breweries=(array-join beer.breweries)
-              ibu=beer.ibu
-              alcool=beer.alcoholPercent
-              rating=beer.rating
-              description=beer.description
-              imagePath=beer.imagePath
-              link="beers/show"}}
-            {{/bp-beer-card}}
-          {{/bp-table}}
-      {{/if}}
-    </div>
+    {{#if (is-pending beersQuery)}}
+      <img src="/assets/images/loader.gif">
+    {{else}}
+        {{#bp-table items=beers as |beer|}}
+          {{#bp-beer-card
+            beerId=beer.id
+            title=beer.name
+            style=beer.style.name
+            breweries=(array-join beer.breweries)
+            ibu=beer.ibu
+            alcool=beer.alcoholPercent
+            rating=beer.rating
+            description=beer.description
+            imagePath=beer.imagePath
+            link="beers/show"}}
+          {{/bp-beer-card}}
+        {{/bp-table}}
+    {{/if}}
   {{/tab.pane}}
   {{#tab.pane title="Breweries"}}
     {{#if (is-pending breweriesQuery)}}
@@ -47,13 +45,13 @@
       {{#bp-table items=reviews as |review|}}
         {{#bp-review-card
           title=review.title
-          reviewId=review.idBeerReview
-          beerId=review.idBeer
+          targetId=review.targetId
           rating=review.rating
           description=review.content
           user=review.user
           imagePath=review.imagePath
           thumbsups=review.thumbsups.length
+          time=review.time
           link="beers/show"}}
         {{/bp-review-card}}
       {{/bp-table}}

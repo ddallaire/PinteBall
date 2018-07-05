@@ -1,4 +1,7 @@
 import { helper } from '@ember/component/helper';
 
-const eq = (params) => params[0] === params[1];
-export default Ember.Helper.helper(eq);
+export function arrayJoin([breweries]/*, hash*/) {
+  return breweries.map(brewery => brewery.name).join(', ');
+}
+
+export default helper(arrayJoin);
