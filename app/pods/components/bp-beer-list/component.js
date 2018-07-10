@@ -11,11 +11,18 @@ export default Component.extend({
   beers: null,
   beerStyles: null,
   beerTags: null,
+  showAddBeer: false,
 
   init() {
     this._super(...arguments);
     this.set('styleFilters', []);
     this.set('tagFilters', []);
+  },
+
+  actions: {
+    toggleAddBeerModal: function() {
+      this.toggleProperty('showAddBeer');
+    },
   },
 
   queryVariables: computed('styleFilters.[]', 'tagFilters.[]', function() {

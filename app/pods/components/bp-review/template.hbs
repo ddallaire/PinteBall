@@ -16,7 +16,7 @@
 </div>
 <p class="comment" onclick={{action 'showAddComment'}}>Comment</p>
 {{#if (is-pending commentsQuery)}}
-  <img src="/assets/images/loader.gif">
+  {{bp-loading}}
 {{else}}
   {{#if comments.length}}
     {{#each comments as |comment|}}

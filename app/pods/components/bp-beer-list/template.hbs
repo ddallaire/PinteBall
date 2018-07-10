@@ -1,4 +1,12 @@
 <h1>Beers</h1>
+<button class="add-beer" onclick={{action 'toggleAddBeerModal'}}>Add a beer</button>
+{{#if showAddBeer}}
+  {{#modal-dialog clickOutsideToClose=true
+                  translucentOverlay=true
+                  onClose="toggleAddBeerModal"}}
+    {{bp-add-beer}}
+  {{/modal-dialog}}
+{{/if}}
 <div class="filters">
   <h2>Filters</h2>
   <h3>Styles</h3>

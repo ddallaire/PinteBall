@@ -1,0 +1,21 @@
+<div class="add-beer-form">
+  <h2>Add a beer</h2>
+  {{input type="text" name="beer-name" value=name placeholder="Name"}}
+  {{textarea type="text" name="beer-description" value=description placeholder="Description"}}
+  {{input type="text" name="beer-image-path" value=imagePath placeholder="Image path"}}
+  <div class="aside">
+    {{input type="number" name="beer-ibu" value=ibu placeholder="IBU"}}
+    {{input type="number" name="beer-alcohol-percent" value=alcoholPercent placeholder="Alcohol by volume (%)"}}
+  </div>
+  <div class="aside">
+  {{input type="text" name="beer-breweries" value=breweries placeholder="Brewery(ies)"}}
+  {{input type="text" name="beer-tags" value=tags placeholder="Tag(s)"}}
+  </div>
+  <div class="aside">
+  {{input type="number" name="beer-rating" value=rating placeholder="Your rating (/5)"}}
+  {{input type="text" name="beer-style" value=style placeholder="Style"}}
+  </div>
+  <div class="button-container">
+    <button class="add-beer-button" onclick={{action 'addBeer'}}>Add beer</button>
+  </div>
+</div>

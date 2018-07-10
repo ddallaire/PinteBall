@@ -5,7 +5,7 @@
 {{/if}}
 <div>
 {{#if (is-pending reviewsQuery)}}
-  <img src="/assets/images/loader.gif">
+  {{bp-loading}}
 {{else}}
   {{#each reviews as |review|}}
     {{bp-review review=review type=type}}
