@@ -65,17 +65,29 @@ export default Component.extend({
         query: beerReviewsQuery,
         variables: {skip: 0, first: 3, beers: [], cips: []}
       }, "beerReviews").then(result => {
-        this.set('reviews', [...this.get('reviews'), ...result.map(a => {a.type="beer"; a.targetId=a.idBeer; return a;})]);
+        this.set('reviews', [...this.get('reviews'),
+          ...result.map(a => {
+            a.type = "beer";
+            a.targetId = a.idBeer;
+            return a;
+          })]);
       }),
-
       this.get('apollo').query({
         query: breweryReviewsQuery,
         variables: {skip: 0, first: 3,  breweries: [], $cips: []}
       }, "breweryReviews").then(result => {
-        this.set('reviews', [...this.get('reviews'), ...result.map(a => {a.type="brewery"; a.targetId=a.idBrewery; return a;})]);
+        this.set('reviews', [...this.get('reviews'),
+          ...result.map(a => {
+            a.type = "brewery";
+            a.targetId = a.idBrewery;
+            return a;
+          })]);
       })
-    ]).then(() => {
-      this.set('reviews', [...this.get('reviews')].sort((a,b) => moment(b.time).diff(moment(a.time))));
-    });
+    ])
+  }),
+
+  sortedReviews: computed('reviews', function() {
+    let reviews = this.get('reviews');
+    return [...reviews].sort((a,b) => moment(b.time).diff(moment(a.time)));
   })
 });

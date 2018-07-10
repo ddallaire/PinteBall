@@ -52,7 +52,7 @@
     {{#if (is-pending reviewsQuery)}}
       {{bp-loading}}
     {{else}}
-      {{#bp-table items=reviews as |review|}}
+      {{#bp-table items=sortedReviews as |review|}}
         {{#bp-review-card
           title=review.title
           targetId=review.targetId
