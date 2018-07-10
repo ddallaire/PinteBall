@@ -1,0 +1,18 @@
+{{#bp-card
+  cardId=targetId
+  title=title
+  imagePath=fallbackImagePath
+  subheading=(concat "-" user.name ", " (moment-calendar time 'days'))
+  description=description
+  type=type
+  smallTitle=true
+  link=(concat (if (is-eq type "beer") "beers") (if (is-eq type "brewery") "breweries") "/show")
+  }}
+  <div class="footer-content">
+    <div class="stars">{{bp-stars-display rating=rating}}</div>
+    <div class="thumbsup">
+      <p>{{thumbsups}}</p>
+      <i class="fa fa-thumbs-up"></i>
+    </div>
+  </div>
+{{/bp-card}}
