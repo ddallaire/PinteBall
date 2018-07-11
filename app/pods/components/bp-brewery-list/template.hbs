@@ -1,4 +1,11 @@
 <h1>Breweries</h1>
+<button class="add-brewery" onclick={{action 'toggleAddBreweryModal'}}>Add a brewery</button>
+{{#if showAddBrewery}}
+  {{#modal-dialog translucentOverlay=true
+                  onClose="toggleAddBreweryModal"}}
+    {{bp-add-brewery onAddBrewery=(action 'onAddBrewery')}}
+  {{/modal-dialog}}
+{{/if}}
 <div class="filters">
   <h2>Filters</h2>
   <h3>Tags</h3>

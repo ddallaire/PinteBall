@@ -28,6 +28,7 @@ export default Component.extend({
     onAddBeer: function() {
       this.toggleProperty('showAddBeer');
       getObservable(this.get('beers')).refetch();
+      getObservable(this.get('beerTags')).refetch();
     }
   },
 
@@ -44,7 +45,7 @@ export default Component.extend({
   }),
 
   beerTagsQuery: computed(function() {
-    return this.get('apollo').query({
+    return this.get('apollo').watchQuery({
       query: tagsQuery,
       variables: {skip: 0, first: 20}
     }, "tags").then(result => {
