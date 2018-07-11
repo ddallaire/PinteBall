@@ -3,7 +3,7 @@
 {{#if showAddBeer}}
   {{#modal-dialog translucentOverlay=true
                   onClose="toggleAddBeerModal"}}
-    {{bp-add-beer beerStyles=beerStyles onAddBeer=(action 'toggleAddBeerModal')}}
+    {{bp-add-beer beerStyles=beerStyles onAddBeer=(action 'onAddBeer')}}
   {{/modal-dialog}}
 {{/if}}
 <div class="filters">

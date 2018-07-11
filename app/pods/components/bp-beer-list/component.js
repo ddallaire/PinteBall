@@ -1,6 +1,7 @@
 import Component from '@ember/component'
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { getObservable } from 'ember-apollo-client';
 import beersQuery from 'pinte-ball/queries/get-beers';
 import beerStylesQuery from 'pinte-ball/queries/get-beer-styles';
 import tagsQuery from 'pinte-ball/queries/get-tags';
@@ -23,6 +24,11 @@ export default Component.extend({
     toggleAddBeerModal: function() {
       this.toggleProperty('showAddBeer');
     },
+
+    onAddBeer: function() {
+      this.toggleProperty('showAddBeer');
+      getObservable(this.get('beers')).refetch();
+    }
   },
 
   queryVariables: computed('styleFilters.[]', 'tagFilters.[]', function() {
@@ -56,7 +62,7 @@ export default Component.extend({
   }),
 
   beersQuery: computed('queryVariables', function() {
-    return this.get('apollo').query({
+    return this.get('apollo').watchQuery({
       query: beersQuery,
       variables: this.get('queryVariables')
     }, "beers").then(result => {
