@@ -3,6 +3,7 @@ query BreweryReviews($skip: Int!, $first: Int!, $breweries: [Int!], $cips: [Stri
     idBreweryReview
     idBrewery
     user {
+      cip
       name
       surname
     }

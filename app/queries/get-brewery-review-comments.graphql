@@ -3,6 +3,7 @@ query BreweryReviewComments($skip: Int!, $first: Int!, $breweryReviews: [Int!], 
     idBreweryReviewComment
     idBreweryReview
     user {
+      cip
       name
       surname
     }

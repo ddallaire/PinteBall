@@ -14,6 +14,7 @@ Router.map(function() {
   this.route('breweries');
   this.route('breweries/show', { path: 'breweries/:brewery_id' })
   this.route('profile');
+  this.route('profile/show', { path: 'profile/:profile_id'})
   this.route('not-found', { path: '/*path' });
 });
 

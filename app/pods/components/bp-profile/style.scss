@@ -1,0 +1,131 @@
+& {
+  padding: 20px 100px 0px 100px;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+.top-wrapper {
+  display: flex;
+  margin-bottom: 40px;
+
+  > * {
+    margin-right: 30px;
+  }
+
+  .user-beer-info {
+    display: inline-flex;
+  }
+
+  button {
+    font-size: large;
+  }
+
+  > div {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .info {
+    display: inline-flex;
+    align-items: baseline;
+    margin-right: 20px;
+
+    :first-child {
+      color: red;
+      font-size: xx-large;
+      margin-right: 4px;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.bottom-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+
+  > * {
+    margin-right: 20px;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:hover .review, a:hover .comment {
+    background-color: #d8c4c4;
+  }
+
+  .review {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    > * {
+      display: inline-flex;
+    }
+
+    .review-title {
+      padding-left: 4px;
+    }
+
+    .stars-wrapper {
+      margin-left: 10px;
+    }
+  }
+
+  .thumbsup {
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    border: 1px solid #f0f0f0;
+    background-color: #f0f0f0;
+
+    > * {
+      margin-right: 10px;
+    }
+
+    :last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+.review, .comment, .thumbsup {
+  border: 1px solid #fde5e5;
+  border-radius: 10px;
+  background-color: #fde5e5;
+  margin-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.reviews, .comments, .thumbsups {
+  > div {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    border: 1px solid grey;
+    padding: 20px;
+  }
+
+  a:last-of-type, .thumbsup:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.reviews, .thumbsups {
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+}
+
+.profile-picture {
+  height: 200px;
+  width: 200px;
+}
