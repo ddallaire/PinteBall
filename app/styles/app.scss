@@ -1,5 +1,7 @@
 @import "pod-styles.scss";
 @import "typography";
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
 
 button {
   background-color: red;
@@ -11,3 +13,7 @@ button {
   margin-top: 20px;
   cursor: pointer;
 }
+
+$ember-power-select-line-height: 2.9;
+
+@import "ember-power-select";
