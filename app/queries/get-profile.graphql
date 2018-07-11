@@ -1,0 +1,204 @@
+query Profile($cip: String!) {
+  profile(cip: $cip) {
+    user {
+      cip
+      name
+      surname
+    }
+    breweryReviewedBy {
+      brewery {
+        id
+        name
+        description
+        imagePath
+        tags {
+          id
+          name
+        }
+        rating
+      }
+      review {
+        idBreweryReview
+        user {
+          cip
+          name
+          surname
+        }
+        idBrewery
+        title
+        content
+        imagePath
+        rating
+        time
+        thumbsups {
+          user {
+            cip
+            name
+            surname
+          }
+        }
+      }
+    }
+    beerReviewedBy {
+      beer {
+        id
+        name
+        description
+        ibu
+        alcoholPercent
+        imagePath
+        breweries {
+          id
+          name
+          description
+          imagePath
+          tags {
+            id
+            name
+          }
+          rating
+        }
+        tags {
+          id
+          name
+        }
+        rating
+        style {
+          id
+          name
+        }
+      }
+      review {
+        idBeerReview
+        user {
+          cip
+          name
+          surname
+        }
+        idBeer
+        title
+        content
+        imagePath
+        rating
+        time
+        thumbsups {
+          user {
+            cip
+            name
+            surname
+          }
+        }
+      }
+    }
+    breweryReviewsCommentedBy {
+      breweryReview {
+        idBreweryReview
+        user {
+          cip
+          name
+          surname
+        }
+        idBrewery
+        title
+        content
+        imagePath
+        rating
+        time
+        thumbsups {
+          user {
+            cip
+            name
+            surname
+          }
+        }
+      }
+      comment {
+        idBreweryReviewComment
+        idBreweryReview
+        user {
+          cip
+          name
+          surname
+        }
+        content
+        time
+      }
+    }
+    beerReviewsCommentedBy {
+      beerReview {
+        idBeerReview
+        user {
+          cip
+          name
+          surname
+        }
+        idBeer
+        title
+        content
+        imagePath
+        rating
+        time
+        thumbsups {
+          user {
+            cip
+            name
+            surname
+          }
+        }
+      }
+      comment {
+        idBeerReviewComment
+        idBeerReview
+        user {
+          cip
+          name
+          surname
+        }
+        content
+        time
+      }
+    }
+    breweryReviewsThumbsupBy {
+      idBreweryReview
+      user {
+        cip
+        name
+        surname
+      }
+      idBrewery
+      title
+      content
+      imagePath
+      rating
+      time
+      thumbsups {
+        user {
+          cip
+          name
+          surname
+        }
+      }
+    }
+    beerReviewsThumbsupBy {
+      idBeerReview
+      user {
+          cip
+          name
+          surname
+      }
+      idBeer
+      title
+      content
+      imagePath
+      rating
+      time
+      thumbsups {
+        user {
+          cip
+          name
+          surname
+        }
+      }
+    }
+	}
+}

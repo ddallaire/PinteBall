@@ -1,0 +1,69 @@
+{{#if (is-pending profileQuery)}}
+    {{bp-loading}}
+  {{else}}
+    <div class="top-wrapper">
+      <img class="profile-picture" src="assets/images/default-user.png"/>
+      <div>
+         <div class="user-info">
+         <h1>{{profile.user.name}} {{profile.user.surname}}</h1>
+          <div class="user-beer-info">
+              <div class="info">
+                <p>234</p>
+                <p>Beers tried</p>
+              </div>
+               <div class="info">
+                <p>49</p>
+                <p>Followers</p>
+              </div>
+               <div class="info">
+                <p>37</p>
+                <p>Following</p>
+              </div>
+            </div>
+        </div>
+        <button>+ FOLLOW</button>
+      </div>
+    </div>
+
+    <h1>Recent activities</h1>
+    <div class="bottom-wrapper">
+      <div class="reviews">
+        <h2>Reviews</h2>
+        <div>
+          {{#each reviews as |review|}}
+              {{#link-to review.target.link review.target.id}}
+                <div class="review">
+                  <p>Reviewed {{review.target.name}} - {{review.review.title}}</p>
+                  <div class="stars-wrapper">
+                    {{bp-stars-display rating=review.review.rating}}
+                  </div>
+                </div>
+              {{/link-to}}
+          {{/each}}
+        </div>
+      </div>
+      <div class="comments">
+        <h2>Recent comments</h2>
+        <div>
+          {{#each comments as |comment|}}
+            {{#link-to comment.link comment.targetId}}
+              <div class="comment">
+                <p>{{comment.comment.content}}</p>
+              </div>
+            {{/link-to}}
+          {{/each}}
+        </div>
+      </div>
+      <div class="thumbsups">
+        <h2>Thumbsups</h2>
+        <div>
+          {{#each thumbsups as |thumbsup|}}
+            <div class="thumbsup">
+              <i class="fa fa-thumbs-up"></i>
+              <p>on {{thumbsup.user.name}}'s review</p>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+{{/if}}
