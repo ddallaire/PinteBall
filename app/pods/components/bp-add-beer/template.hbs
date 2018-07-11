@@ -7,13 +7,31 @@
     {{input type="number" name="beer-ibu" value=ibu placeholder="IBU"}}
     {{input type="number" name="beer-alcohol-percent" value=alcoholPercent placeholder="Alcohol by volume (%)"}}
   </div>
+</div>
+  {{#if (is-pending breweriesQuery)}}
+  {{else}}
+    {{#power-select-multiple
+      selected=selectedBreweries
+      options=breweries
+      placeholder="Breweries"
+      onchange=(action "updateBreweriesValues") as |brewery|
+    }}
+      {{brewery.name}}
+    {{/power-select-multiple}}
+  {{/if}}
+<div class="add-beer-form">
+  {{input type="text" name="beer-tags" value=tags placeholder="Tags"}}
   <div class="aside">
-  {{input type="text" name="beer-breweries" value=breweries placeholder="Brewery(ies)"}}
-  {{input type="text" name="beer-tags" value=tags placeholder="Tag(s)"}}
-  </div>
-  <div class="aside">
-  {{input type="number" name="beer-rating" value=rating placeholder="Your rating (/5)"}}
-  {{input type="text" name="beer-style" value=style placeholder="Style"}}
+    {{input type="number" name="beer-rating" value=rating placeholder="Your rating (/5)"}}
+    {{#power-select
+      selected=selectedStyle
+      options=beerStyles
+      placeholder="Style"
+      searchField="name"
+      onchange=(action "updateStyleValue") as |beerStyle|
+    }}
+      {{beerStyle.name}}
+    {{/power-select}}
   </div>
   <div class="button-container">
     <button class="add-beer-button" onclick={{action 'addBeer'}}>Add beer</button>

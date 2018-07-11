@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
-import beweriesQuery from 'pinte-ball/queries/get-breweries';
+import breweriesQuery from 'pinte-ball/queries/get-breweries';
 import tagsQuery from 'pinte-ball/queries/get-tags';
 
 export default Component.extend({
@@ -36,7 +36,7 @@ export default Component.extend({
 
   breweriesQuery: computed('queryVariables', function() {
     return this.get('apollo').query({
-      query: beweriesQuery,
+      query: breweriesQuery,
       variables: this.get('queryVariables')
     }, "breweries").then(result => {
       this.set('breweries', result);

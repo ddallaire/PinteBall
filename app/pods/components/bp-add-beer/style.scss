@@ -1,6 +1,5 @@
 .add-beer-form {
   display: flex;
-  padding: 20px 0;
   flex-direction: column;
   align-items: center;
   width: 40vw;
@@ -28,11 +27,19 @@
 
   .aside {
     display: flex;
+    align-items: center;
     flex-direction: row;
     width: 70%;
 
+    .ember-power-select-trigger {
+      width: 50%;
+      margin: 8px 0 8px 5px;
+      padding: 0;
+      font-size: 13.3px;
+    }
+
     input {
-      width: 50%;;
+      width: 50%;
     }
 
     input:first-child {
@@ -51,4 +58,11 @@
       float: right;
     }
   }
+}
+
+.ember-power-select-trigger {
+  width: 70%;
+  margin: 8px auto;
+  padding: 0;
+  font-size: 13.3px;
 }
