@@ -1,0 +1,12 @@
+mutation InsertBrewery($name: String!,
+                       $description: String!,
+                       $imagePath: String!,
+                       $tags: [String!]) {
+  insertBrewery(name: $name,
+             description: $description,
+             imagePath: $imagePath,
+             tags: $tags)
+  {
+    id
+  }
+}

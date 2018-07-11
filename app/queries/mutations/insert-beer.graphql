@@ -17,6 +17,6 @@ mutation InsertBeer($name: String!,
              rating: $rating,
              style: $style)
   {
-    name
+    id
   }
 }
