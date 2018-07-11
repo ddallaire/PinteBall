@@ -58,7 +58,7 @@ export default Component.extend({
   }),
 
   sortedComments: computed('comments', function() {
-   return sortByTime(this.get('comments')).slice(0,4);
+    return sortByTime(this.get('comments')).slice(0,4);
   }),
 
   thumbsups: computed('profile', function() {

@@ -5,4 +5,3 @@ export default Route.extend({
     return params.profile_id;
   }
 });
-
