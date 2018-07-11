@@ -3,7 +3,6 @@ import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import InsertBeer from 'pinte-ball/queries/mutations/insert-beer';
 import breweriesQuery from 'pinte-ball/queries/get-breweries';
-import tagsQuery from 'pinte-ball/queries/get-tags';
 
 export default Component.extend({
   apollo: service('apollo'),
