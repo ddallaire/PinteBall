@@ -4,6 +4,10 @@ import { inject as service } from '@ember/service';
 import profileQuery from 'pinte-ball/queries/get-profile';
 import moment from 'moment';
 
+function sortByTime(array) {
+  return array.sort((a,b) => moment(b.time).diff(moment(a.time)))
+}
+
 export default Component.extend({
   apollo: service('apollo'),
   session: service('session'),
@@ -11,7 +15,7 @@ export default Component.extend({
   profileQuery: computed(function() {
     return this.get('apollo').query({
       query: profileQuery,
-      variables: {cip: this.get('session').credentials.cip}
+      variables: {cip: this.get('cip') || this.get('session').credentials.cip}
     }, 'profile').then(result => {
       this.set('profile', result);
     });
@@ -30,7 +34,11 @@ export default Component.extend({
         a.target.link = "beers/show";
         return a;
       })
-    ].sort((a,b) => moment(b.time).diff(moment(a.time))).slice(0,4);
+    ];
+  }),
+
+  sortedReviews: computed('reviews', function() {
+    return sortByTime(this.get('reviews')).slice(0,4);
   }),
 
   comments: computed('profile', function() {
@@ -46,7 +54,11 @@ export default Component.extend({
         a.link = "beers/show";
         return a;
       })
-    ].sort((a,b) => moment(b.time).diff(moment(a.time))).slice(0,4);
+    ]
+  }),
+
+  sortedComments: computed('comments', function() {
+   return sortByTime(this.get('comments')).slice(0,4);
   }),
 
   thumbsups: computed('profile', function() {
@@ -54,6 +66,11 @@ export default Component.extend({
     return [
       ...profile.breweryReviewsThumbsupBy,
       ...profile.breweryReviewsThumbsupBy
-    ].sort((a,b) => moment(b.time).diff(moment(a.time))).slice(0,4);
+    ];
+  }),
+
+  sortedThumbsups: computed('thumbsups', function() {
+    return sortByTime(this.get('thumbsups')).slice(0,4);
   })
 });
+
