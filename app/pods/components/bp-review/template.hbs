@@ -18,7 +18,9 @@
     <img class="display-image" src="{{review.imagePath}}" alt="Image did not load" onerror="this.style.display='none'">
   {{/if}}
 </div>
-<p class="comment" onclick={{action 'showAddComment'}}>Comment</p>
+<div class="actions">
+  <p class="action" onclick={{action 'showAddComment'}}>Comment</p>
+</div>
 {{#if (is-pending commentsQuery)}}
   {{bp-loading}}
 {{else}}
