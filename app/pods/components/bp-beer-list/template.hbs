@@ -1,26 +1,36 @@
 <h1>Beers</h1>
-<div class="filters">
-  <h2>Filters</h2>
-  <h3>Styles</h3>
-  {{#if (is-pending beerStylesQuery)}}
-    <img src="/assets/images/loader.gif">
-  {{else}}
-    {{multiselect-checkboxes
-      options=beerStyles
-      labelProperty='name'
-      selection=styleFilters
-    }}
-  {{/if}}
-  <h3>Tags</h3>
-  {{#if (is-pending beerTagsQuery)}}
-    <img src="/assets/images/loader.gif">
-  {{else}}
-    {{multiselect-checkboxes
-      options=beerTags
-      labelProperty='name'
-      selection=tagFilters
-    }}
-  {{/if}}
+<div class="filters-container">
+  <div class="filter">
+    <div class="filter-name">Style</div>
+    <i class="fa fa-chevron-down filter-arrow"></i>
+    <div class="filter-content">
+      {{#if (is-pending beerStylesQuery)}}
+        <img src="/assets/images/loader.gif">
+      {{else}} 
+        {{multiselect-checkboxes
+          options=beerStyles
+          labelProperty='name'
+          selection=styleFilters
+        }}
+      {{/if}}
+    </div>
+  </div>
+  <div class="filter">
+    <div class="filter-name">Tag</div>
+    <i class="fa fa-chevron-down filter-arrow"></i>
+    <div class="filter-content">
+      {{#if (is-pending beerTagsQuery)}}
+        <img src="/assets/images/loader.gif">
+      {{else}}
+        {{multiselect-checkboxes
+          options=beerTags
+          labelProperty='name'
+          selection=tagFilters
+        }}
+      {{/if}}
+    </div>
+  </div>
+  <div class="filter-header">Filter by:</div>
 </div>
 {{#if (is-pending beersQuery)}}
   <img src="/assets/images/loader.gif">
