@@ -38,6 +38,9 @@ export default Component.extend({
     });
   }),
 
+  thumbsupCount: computed('review', function() {
+    return this.get('review.thumbsups').length;
+  }),
 
   actions: {
     showAddComment: function() {
