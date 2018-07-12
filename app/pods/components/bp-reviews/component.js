@@ -44,6 +44,7 @@ export default Component.extend({
 
     refetchReviews() {
       getObservable(this.get('reviews')).refetch();
+      this.toggleProperty('displayAddReview');
     }
   }
 });
