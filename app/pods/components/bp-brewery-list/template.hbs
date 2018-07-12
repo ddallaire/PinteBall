@@ -1,19 +1,31 @@
 <h1>Breweries</h1>
-<div class="filters">
-  <h2>Filters</h2>
-  <h3>Tags</h3>
-  {{#if (is-pending breweriesTagsQuery)}}
-    <img src="/assets/images/loader.gif">
-  {{else}}
-    {{multiselect-checkboxes
-      options=breweriesTags
-      labelProperty='name'
-      selection=tagFilters
-    }}
-  {{/if}}
+<button class="add-brewery" onclick={{action 'toggleAddBreweryModal'}}>Add a brewery</button>
+{{#if showAddBrewery}}
+  {{#modal-dialog translucentOverlay=true
+                  onClose="toggleAddBreweryModal"}}
+    {{bp-add-brewery onAddBrewery=(action 'onAddBrewery')}}
+  {{/modal-dialog}}
+{{/if}}
+<div class="filters-container">
+  <div class="filter">
+    <div class="filter-name">Tag</div>
+    <i class="fa fa-chevron-down filter-arrow"></i>
+    <div class="filter-content">
+      {{#if (is-pending breweriesTagsQuery)}}
+        {{bp-loading}}
+      {{else}}
+        {{multiselect-checkboxes
+          options=breweriesTags
+          labelProperty='name'
+          selection=tagFilters
+        }}
+      {{/if}}
+    </div>
+  </div>
+  <div class="filter-header">Filter by:</div>
 </div>
 {{#if (is-pending breweriesQuery)}}
-  <img src="/assets/images/loader.gif">
+  {{bp-loading}}
 {{else}}
   {{#bp-table items=breweries as |brewery|}}
     {{#bp-brewery-card

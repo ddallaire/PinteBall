@@ -1,0 +1,8 @@
+<div class="add-brewery-form">
+  <h2>Add a brewery</h2>
+  {{input type="text" name="brewery-name" value=name placeholder="Name"}}
+  {{textarea type="text" name="brewery-description" value=description placeholder="Description"}}
+  {{input type="text" name="brewery-image-path" value=imagePath placeholder="Image path"}}
+  {{input type="text" name="brewery-tags" value=tags placeholder="Tags"}}
+  <button class="add-brewery-button" onclick={{action 'addBrewery'}}>Add brewery</button>
+</div>

@@ -3,7 +3,10 @@
     <h3>{{review.title}} {{bp-stars-display rating=review.rating}}</h3>
   </div>
   <div class="infos">
-    by {{review.user.name}} on {{moment-calendar review.time 'days'}}
+    by {{#link-to "profile/show" review.user.cip}}
+        {{review.user.name}}
+       {{/link-to}}
+    on {{moment-calendar review.time 'days'}}
   </div>
 </div>
 <div class="content">
@@ -16,7 +19,7 @@
 </div>
 <p class="comment" onclick={{action 'showAddComment'}}>Comment</p>
 {{#if (is-pending commentsQuery)}}
-  <img src="/assets/images/loader.gif">
+  {{bp-loading}}
 {{else}}
   {{#if comments.length}}
     {{#each comments as |comment|}}

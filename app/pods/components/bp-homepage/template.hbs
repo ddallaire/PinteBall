@@ -1,0 +1,69 @@
+<div class="tab-header">
+  <h1>Trending</h1>
+  <li>
+    <a href="#" class="tab {{if showBeers 'active'}}" {{action 'showBeers'}}>Beers</a>
+    <a href="#" class="tab {{if showBreweries 'active'}}" {{action 'showBreweries'}}>Breweries</a>
+    <a href="#" class="tab {{if showReviews 'active'}}" {{action 'showReviews'}}>Reviews</a>
+  </li>
+</div>
+
+<div>
+  {{#if showBeers}}
+    {{#if (is-pending beersQuery)}}
+      {{bp-loading}}
+    {{else}}
+      {{#bp-table items=beers as |beer|}}
+        {{#bp-beer-card
+          beerId=beer.id
+          title=beer.name
+          style=beer.style.name
+          breweries=(array-join beer.breweries)
+          ibu=beer.ibu
+          alcool=beer.alcoholPercent
+          rating=beer.rating
+          description=beer.description
+          imagePath=beer.imagePath
+          link="beers/show"}}
+        {{/bp-beer-card}}
+      {{/bp-table}}
+    {{/if}}
+  {{/if}}
+
+  {{#if showBreweries}}
+    {{#if (is-pending breweriesQuery)}}
+      {{bp-loading}}
+    {{else}}
+      {{#bp-table items=breweries as |brewery|}}
+        {{#bp-brewery-card
+          title=brewery.name
+          breweryId=brewery.id
+          type=(concat "#" brewery.tags.0.name)
+          rating=brewery.rating
+          description=brewery.description
+          imagePath=brewery.imagePath
+          link="breweries/show"}}
+        {{/bp-brewery-card}}
+      {{/bp-table}}
+    {{/if}}
+  {{/if}}
+
+  {{#if showReviews}}
+    {{#if (is-pending reviewsQuery)}}
+      {{bp-loading}}
+    {{else}}
+      {{#bp-table items=sortedReviews as |review|}}
+        {{#bp-review-card
+          title=review.title
+          targetId=review.targetId
+          rating=review.rating
+          description=review.content
+          user=review.user
+          imagePath=review.imagePath
+          thumbsups=review.thumbsups.length
+          type=review.type
+          time=review.time}}
+        {{/bp-review-card}}
+      {{/bp-table}}
+    {{/if}}
+  {{/if}}
+</div>

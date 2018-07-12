@@ -1,0 +1,22 @@
+mutation InsertBeer($name: String!,
+                    $description: String!,
+                    $ibu: Int!,
+                    $alcoholPercent: Float!,
+                    $imagePath: String!,
+                    $breweries: [Int!],
+                    $tags: [String!],
+                    $rating: Float!,
+                    $style: Int!) {
+  insertBeer(name: $name,
+             description: $description,
+             ibu: $ibu,
+             alcoholPercent: $alcoholPercent,
+             imagePath: $imagePath,
+             breweries: $breweries,
+             tags: $tags,
+             rating: $rating,
+             style: $style)
+  {
+    id
+  }
+}

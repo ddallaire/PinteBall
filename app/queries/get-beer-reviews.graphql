@@ -1,7 +1,9 @@
 query BeerReviews($skip: Int!, $first: Int!, $beers: [Int!], $cips: [String!]) {
   beerReviews(skip: $skip, first: $first, orderBy: TIME, orderType: DESC, beers: $beers, cips: $cips) {
     idBeerReview
+    idBeer
     user {
+      cip
       name
       surname
     }

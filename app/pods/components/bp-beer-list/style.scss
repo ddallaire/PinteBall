@@ -6,6 +6,7 @@
 .filters-container {
   display: flex;
   flex-direction: row-reverse;
+  margin-right: 25px;
   height: 75px;
   align-items: center;
   font-size: 24px;
@@ -49,9 +50,5 @@
 
 ul {
   columns: 2;
-  list-style-type: none;  
-}
-
-input {
-  background-color: red;
+  list-style-type: none;
 }
