@@ -27,7 +27,6 @@ export default Component.extend({
         imagePath: this.get('imagePath'),
         breweries: this.get('selectedBreweries').map(b => b.id),
         tags: this.get('tags').split(','),
-        rating: this.get('rating'),
         style: this.get('selectedStyle.id'),
       }
 

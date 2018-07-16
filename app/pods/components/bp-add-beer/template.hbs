@@ -21,18 +21,15 @@
   {{/if}}
 <div class="add-beer-form">
   {{input type="text" name="beer-tags" value=tags placeholder="Tags"}}
-  <div class="aside">
-    {{input type="number" name="beer-rating" value=rating placeholder="Your rating (/5)"}}
-    {{#power-select
-      selected=selectedStyle
-      options=beerStyles
-      placeholder="Style"
-      searchField="name"
-      onchange=(action "updateStyleValue") as |beerStyle|
-    }}
-      {{beerStyle.name}}
-    {{/power-select}}
-  </div>
+  {{#power-select
+    selected=selectedStyle
+    options=beerStyles
+    placeholder="Style"
+    searchField="name"
+    onchange=(action "updateStyleValue") as |beerStyle|
+  }}
+    {{beerStyle.name}}
+  {{/power-select}}
   <div class="button-container">
     <button class="add-beer-button" onclick={{action 'addBeer'}}>Add beer</button>
   </div>

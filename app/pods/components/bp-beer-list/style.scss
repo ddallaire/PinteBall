@@ -3,13 +3,19 @@
   width: 80%;
 }
 
-.filters-container {
+.actions-container {
   display: flex;
   flex-direction: row-reverse;
   margin-right: 25px;
+  margin-bottom: 20px;
   height: 75px;
   align-items: center;
   font-size: 24px;
+
+  .add-beer {
+    margin-right: auto;
+    font-size: 20px;
+  }
 }
 
 .filter {
