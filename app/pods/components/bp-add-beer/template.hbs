@@ -1,39 +1,37 @@
-<div class="add-beer-form">
-  <h2>Add a beer</h2>
-  {{input type="text" name="beer-name" value=name placeholder="Name"}}
-  {{textarea type="text" name="beer-description" value=description placeholder="Description"}}
-  {{input type="text" name="beer-image-path" value=imagePath placeholder="Image path"}}
-  <div class="aside">
-    {{input type="number" name="beer-ibu" value=ibu placeholder="IBU"}}
-    {{input type="number" name="beer-alcohol-percent" value=alcoholPercent placeholder="Alcohol by volume (%)"}}
+{{#validated-form model=(changeset model beerValidations) on-submit=(action "addBeer") as |f|}}
+  <div class="add-beer-form">
+    <h2>Add a beer</h2>
+    {{f.input label='Name' type="text" name="beerName" value=name placeholder="Name" required=true}}
+    {{f.input label='Description' type="textarea" name="beerDescription" value=description placeholder="Description" required=true}}
+    {{f.input label='Image path' type="text" name="beerImagePath" value=imagePath placeholder="Image path" required=true}}
+      {{f.input label='IBU' type="number" name="beerIbu" value=ibu placeholder="IBU" required=true min='0' max='200'}}
+      {{f.input label='Alcohol by volume' type="number" name="beerAlcoholPercent" value=alcoholPercent placeholder="Alcohol by volume (%)" required=true min='0' max='100'}}
+    {{#if (is-pending breweriesQuery)}}
+    {{else}}
+      {{#f.input label="Brewery(ies)" name="beerBreweries" required=true as |fi|}}
+        {{#power-select-multiple
+          selected=fi.value
+          options=breweries
+          placeholder="Breweries"
+          onchange=fi.update as |brewery|
+        }}
+          {{brewery.name}}
+        {{/power-select-multiple}}
+      {{/f.input}}
+    {{/if}}
+    {{f.input label='Tags' type="text" name="beerTags" value=tags placeholder="Tags" required=true}}
+    {{#f.input label="Style" name="beerStyle" required=true as |fi|}}
+      {{#power-select
+        selected=fi.value
+        options=beerStyles
+        placeholder="Style"
+        allowClear=true
+        searchField="name"
+        onchange=fi.update as |beerStyle|
+      }}
+        {{beerStyle.name}}
+      {{/power-select}}
+    {{/f.input}}
+    {{f.submit class="add-beer-button" label="Add beer"}}
   </div>
-</div>
-  {{#if (is-pending breweriesQuery)}}
-  {{else}}
-    {{#power-select-multiple
-      selected=selectedBreweries
-      options=breweries
-      placeholder="Breweries"
-      onchange=(action "updateBreweriesValues") as |brewery|
-    }}
-      {{brewery.name}}
-    {{/power-select-multiple}}
-  {{/if}}
-<div class="add-beer-form">
-  {{input type="text" name="beer-tags" value=tags placeholder="Tags"}}
-  <div class="aside">
-    {{input type="number" name="beer-rating" value=rating placeholder="Your rating (/5)"}}
-    {{#power-select
-      selected=selectedStyle
-      options=beerStyles
-      placeholder="Style"
-      searchField="name"
-      onchange=(action "updateStyleValue") as |beerStyle|
-    }}
-      {{beerStyle.name}}
-    {{/power-select}}
-  </div>
-  <div class="button-container">
-    <button class="add-beer-button" onclick={{action 'addBeer'}}>Add beer</button>
-  </div>
-</div>
+{{/validated-form}}

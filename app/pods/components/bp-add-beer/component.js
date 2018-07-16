@@ -3,41 +3,47 @@ import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import InsertBeer from 'pinte-ball/queries/mutations/insert-beer';
 import breweriesQuery from 'pinte-ball/queries/get-breweries';
+import { validatePresence, validateLength, validateNumber } from 'ember-changeset-validations/validators';
 
 export default Component.extend({
   apollo: service('apollo'),
 
+  model: {},
   breweries: null,
 
-  actions: {
-    updateStyleValue: function(style) {
-      this.set('selectedStyle', style);
-    },
+  init() {
+    this._super(...arguments);
 
-    updateBreweriesValues: function(breweries) {
+    this.set('model', {});
+  },
+
+  actions: {
+    updateBreweriesValues: function (breweries) {
       this.set('selectedBreweries', breweries);
     },
 
-    addBeer: function() {
+    addBeer: function(model) {
+      return model.save().then(() => {
       const variables = {
-        name: this.get('name'),
-        description: this.get('description'),
-        ibu: this.get('ibu'),
-        alcoholPercent: this.get('alcoholPercent'),
-        imagePath: this.get('imagePath'),
-        breweries: this.get('selectedBreweries').map(b => b.id),
-        tags: this.get('tags').split(','),
-        rating: this.get('rating'),
-        style: this.get('selectedStyle.id'),
+        name: model.get('beerName'),
+        description: model.get('beerDescription'),
+        ibu: model.get('beerIbu'),
+        alcoholPercent: model.get('beerAlcoholPercent'),
+        imagePath: model.get('beerImagePath'),
+        breweries: model.get('beerBreweries').map(b => b.id),
+        tags: model.get('beerTags').split(','),
+        style: model.get('beerStyle.id'),
       }
 
-      this.apollo.client.mutate({mutation: InsertBeer, variables}).then(() => {
+      this.apollo.client.mutate({ mutation: InsertBeer, variables }).then(() => {
+        model = null;
         this.get('onAddBeer')();
       });
+    })
     },
   },
 
-  breweriesQuery: computed(function() {
+  breweriesQuery: computed(function () {
     return this.get('apollo').query({
       query: breweriesQuery,
       variables: {
@@ -48,5 +54,16 @@ export default Component.extend({
     }, "breweries").then(result => {
       this.set('breweries', result);
     });
-  })
+  }),
+
+  beerValidations: {
+    beerName: [validatePresence(true), validateLength({ min: 1, max: 256 })],
+    beerDescription: [validatePresence(true), validateLength({ min: 1, max: 1024 })],
+    beerIbu: [validatePresence(true), validateNumber({ positive: true, lte: 200, gte: 0, integer: false })],
+    beerImagePath: [validatePresence(true)],
+    beerAlcoholPercent: [validatePresence(true), validateNumber({ positive: true, lte: 100, gte: 0 })],
+    beerBreweries: [validatePresence(true)],
+    beerTags: [validatePresence(true), validateLength({ min: 1, max: 256 })],
+    beerStyle: [validatePresence(true)]
+  }
 });

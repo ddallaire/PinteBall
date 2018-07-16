@@ -1,68 +1,59 @@
 .add-beer-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 40vw;
-
-  input {
-    width: 70%;
-    border-radius: 50px;
-    padding: 12px 20px;
-    margin: 8px 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  h2 {
+    text-align: center;
   }
 
-  textarea {
-    width: 70%;
-    height: 150px;
-    margin: 8px 5px;
-    padding: 12px 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: none;
-    box-sizing: border-box;
-  }
-
-  .aside {
+  .form-group {
     display: flex;
-    align-items: center;
-    flex-direction: row;
-    width: 70%;
-
-    .ember-power-select-trigger {
-      width: 50%;
-      margin: 8px 0 8px 5px;
-      padding: 0;
-      font-size: 13.3px;
-    }
+    flex-direction: column;
+    width: 30vw;
 
     input {
-      width: 50%;
+      width: 70%;
+      border-radius: 50px;
+      padding: 12px 20px;
+      margin: 8px 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
     }
 
-    input:first-child {
-      margin-left: 0;
+    label {
+      display: block;
+      margin: 5px 5px 0;
     }
 
-    input:last-child {
-      margin-right: 0;
+    .form-error-msg {
+      font-size: 12px;
+      color: red;
+      margin: 0 5px;
+    }
+
+    textarea {
+      width: 70%;
+      height: 100px;
+      margin: 8px 5px;
+      padding: 12px 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+      box-sizing: border-box;
+    }
+
+    .button-container {
+      width: 70%;
+
+      .add-beer-button {
+        float: right;
+      }
     }
   }
 
-  .button-container {
+  .ember-power-select-trigger {
     width: 70%;
-
-    .add-beer-button {
-      float: right;
-    }
+    padding: 0;
+    font-size: 13.3px;
+    margin: 8px 5px;
   }
 }
 
-.ember-power-select-trigger {
-  width: 70%;
-  margin: 8px auto;
-  padding: 0;
-  font-size: 13.3px;
-}
