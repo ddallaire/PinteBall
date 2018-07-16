@@ -1,4 +1,4 @@
-{{#validated-form model=(changeset model beerValidations) on-submit=(action "addBeer") as |f|}}
+{{#validated-form model=(changeset model BeerValidations) on-submit=(action "addBeer") as |f|}}
   <div class="add-beer-form">
     <h2>Add a beer</h2>
     {{f.input label='Name' type="text" name="beerName" value=name placeholder="Name" required=true}}
