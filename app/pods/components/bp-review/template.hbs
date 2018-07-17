@@ -6,8 +6,8 @@
     by {{#link-to "profile/show" review.user.cip}}
         {{review.user.name}}
        {{/link-to}}
-    on {{moment-calendar review.time 'days'}}
-    {{bp-thumbsup count=thumbsupCount}}
+    on {{moment-calendar review.time "days"}}
+    {{bp-thumbsup count=thumbsupCount liked=liked}}
   </div>
 </div>
 <div class="content">
@@ -19,6 +19,7 @@
   {{/if}}
 </div>
 <div class="actions">
+  <p class="action" {{action "toggleLike"}}>{{if liked "Unlike"}}{{unless liked "Like"}}</p>
   <p class="action" onclick={{action 'showAddComment'}}>Comment</p>
 </div>
 {{#if displayAddComment}}
