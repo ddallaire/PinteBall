@@ -6,7 +6,7 @@
   .form-group {
     display: flex;
     flex-direction: column;
-    width: 30vw;
+    width: 40vw;
 
     input {
       width: 70%;
@@ -39,14 +39,10 @@
       resize: none;
       box-sizing: border-box;
     }
+  }
 
-    .button-container {
-      width: 70%;
-
-      .add-beer-button {
-        float: right;
-      }
-    }
+  .add-beer-button {
+    float: right;
   }
 
   .ember-power-select-trigger {

@@ -1,8 +1,10 @@
+{{#validated-form model=(changeset model BreweryValidations) on-submit=(action "addBrewery") as |f|}}
 <div class="add-brewery-form">
   <h2>Add a brewery</h2>
-  {{input type="text" name="brewery-name" value=name placeholder="Name"}}
-  {{textarea type="text" name="brewery-description" value=description placeholder="Description"}}
-  {{input type="text" name="brewery-image-path" value=imagePath placeholder="Image path"}}
-  {{input type="text" name="brewery-tags" value=tags placeholder="Tags"}}
-  <button class="add-brewery-button" onclick={{action 'addBrewery'}}>Add brewery</button>
+  {{f.input label="Name" type="text" name="breweryName" value=name placeholder="Name" required=true}}
+  {{f.input label="Description" type="textarea" name="breweryDescription" value=description placeholder="Description" required=true}}
+  {{f.input label="Image path" type="text" name="breweryImagePath" value=imagePath placeholder="Image path" required=true}}
+  {{f.input label="Tags" type="text" name="breweryTags" value=tags placeholder="Tags"required=true}}
+  {{f.submit class="add-brewery-button" label="Add brewery"}}
 </div>
+{{/validated-form}}

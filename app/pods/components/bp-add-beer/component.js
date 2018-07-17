@@ -14,7 +14,6 @@ export default Component.extend({
 
   init() {
     this._super(...arguments);
-
     this.set('model', {});
   },
 
@@ -37,10 +36,9 @@ export default Component.extend({
         }
 
         this.apollo.client.mutate({ mutation: InsertBeer, variables }).then(() => {
-          model = null;
           this.get('onAddBeer')();
         });
-      })
+      });
     },
   },
 

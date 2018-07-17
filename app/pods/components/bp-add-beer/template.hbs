@@ -4,8 +4,8 @@
     {{f.input label='Name' type="text" name="beerName" value=name placeholder="Name" required=true}}
     {{f.input label='Description' type="textarea" name="beerDescription" value=description placeholder="Description" required=true}}
     {{f.input label='Image path' type="text" name="beerImagePath" value=imagePath placeholder="Image path" required=true}}
-      {{f.input label='IBU' type="number" name="beerIbu" value=ibu placeholder="IBU" required=true min='0' max='200'}}
-      {{f.input label='Alcohol by volume' type="number" name="beerAlcoholPercent" value=alcoholPercent placeholder="Alcohol by volume (%)" required=true min='0' max='100'}}
+    {{f.input label='IBU' type="text" name="beerIbu" value=ibu placeholder="IBU" required=true}}
+    {{f.input label='Alcohol by volume (%)' type="text" name="beerAlcoholPercent" value=alcoholPercent placeholder="Alcohol by volume (%)" required=true}}
     {{#if (is-pending breweriesQuery)}}
     {{else}}
       {{#f.input label="Brewery(ies)" name="beerBreweries" required=true as |fi|}}
