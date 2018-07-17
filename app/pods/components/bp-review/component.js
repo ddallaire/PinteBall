@@ -13,8 +13,6 @@ export default Component.extend({
   apollo: service('apollo'),
   session: service('session'),
   displayAddComment: false,
-  liked: false,
-
   comments: null,
 
   liked: computed('review', 'session', function() {
@@ -62,22 +60,26 @@ export default Component.extend({
       this.toggleProperty('displayAddComment');
       getObservable(this.get('comments')).refetch();
     },
+
     toggleLike: function() {
       let query = null;
       let variables = null;
-      let insert = false;
-      let liked = this.get('liked');
-      this.set('liked', !liked);
+      const userLiked = !this.get('liked');
+      const count = this.get('thumbsupCount');
+
+      this.set('liked', userLiked);
+      this.set('thumbsupCount', userLiked ? count+1 : count-1);
+
 
       if (this.get('type') === 'beer') {
-        query = liked ? DeleteBeerReviewThumbsup : InsertBeerReviewThumbsup;
+        query = userLiked ? InsertBeerReviewThumbsup: DeleteBeerReviewThumbsup;
         variables = {id: this.get('review.idBeerReview')};
       } else {
-        query = liked ?  DeleteBreweryReviewThumbsup : InsertBreweryReviewThumbsup;
+        query = userLiked ? InsertBreweryReviewThumbsup : DeleteBreweryReviewThumbsup;
         variables = {id: this.get('review.idBreweryReview')};
       }
 
-      this.apollo.client.mutate({mutation: query, variables}).then(() => {});
+      this.apollo.client.mutate({mutation: query, variables}).then(this.get('onThumbsup'));
     }
   },
 });
