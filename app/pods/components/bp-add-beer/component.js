@@ -22,7 +22,7 @@ export default Component.extend({
       this.set('selectedBreweries', breweries);
     },
 
-    addBeer: function (model) {
+    addBeer: function(model) {
       return model.save().then(() => {
         const variables = {
           name: model.get('beerName'),

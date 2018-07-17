@@ -1,4 +1,4 @@
-import { validatePresence, validateLength, validateNumber } from 'ember-changeset-validations/validators';
+import { validatePresence, validateLength } from 'ember-changeset-validations/validators';
 
 export default {
   breweryName: [validatePresence(true), validateLength({ min: 1, max: 256 })],

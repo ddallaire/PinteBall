@@ -18,10 +18,10 @@ export default Component.extend({
     addBrewery: function(model) {
       return model.save().then(() => {
         const variables = {
-          name: model.get('name'),
-          description: model.get('description'),
-          imagePath: model.get('imagePath'),
-          tags: model.get('tags').split(',')
+          name: model.get('breweryName'),
+          description: model.get('breweryDescription'),
+          imagePath: model.get('breweryImagePath'),
+          tags: model.get('breweryTags').split(',')
         }
 
         this.apollo.client.mutate({mutation: InsertBrewery, variables}).then(() => {
