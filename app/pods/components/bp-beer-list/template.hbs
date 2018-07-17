@@ -1,12 +1,11 @@
 <h1>Beers</h1>
-<button class="add-beer" onclick={{action 'toggleAddBeerModal'}}>Add a beer</button>
 {{#if showAddBeer}}
   {{#modal-dialog translucentOverlay=true
                   onClose="toggleAddBeerModal"}}
     {{bp-add-beer beerStyles=beerStyles onAddBeer=(action 'onAddBeer')}}
   {{/modal-dialog}}
 {{/if}}
-<div class="filters-container">
+<div class="actions-container">
   <div class="filter">
     <div class="filter-name">Style</div>
     <i class="fa fa-chevron-down filter-arrow"></i>
@@ -38,6 +37,7 @@
     </div>
   </div>
   <div class="filter-header">Filter by:</div>
+  <button class="add-beer" onclick={{action 'toggleAddBeerModal'}}>Add a beer</button>
 </div>
 {{#if (is-pending beersQuery)}}
   {{bp-loading}}
