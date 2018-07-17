@@ -1,0 +1,3 @@
+mutation InsertBreweryReviewThumbsup($id: Int!) {
+  insertBreweryReviewThumbsup(id: $id)
+}

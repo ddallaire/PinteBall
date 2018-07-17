@@ -1,0 +1,3 @@
+mutation DeleteBeerReviewThumbsup($id: Int!) {
+  deleteBeerReviewThumbsup(id: $id)
+}

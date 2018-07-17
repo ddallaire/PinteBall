@@ -14,6 +14,7 @@ query BreweryReviews($skip: Int!, $first: Int!, $breweries: [Int!], $cips: [Stri
     time
     thumbsups {
       user {
+        cip
         name
         surname
       }
