@@ -1,13 +1,10 @@
-<div class="add-review-form">
-  <div class="title-rating">
-    {{input type="text"  class="title" name="title" value=title placeholder="Title"}}
-    {{input type="number" name="rating" class="rating" value=rating min="0" max="5" placeholder="Rating"}}
+{{#validated-form model=(changeset model ReviewValidations) on-submit=(action "addReview") as |f|}}
+  <div class="add-review-form">
+    <h2>Add a review</h2>
+    {{f.input label="Title" type="text" class="title" name="reviewTitle" value=title placeholder="Title" required=true}}
+    {{f.input label="Rating" type="text" name="reviewRating" class="rating" value=rating min="0" max="5" placeholder="Rating" required=true}}
+    {{f.input label="Content" type="textarea" name="reviewContent" value=content placeholder="Content" required=true}}
+    {{f.input label="Image path" type="text" name="reviewImagePath" value=imagePath placeholder="Image path" required=true}}
+    {{f.submit class="add-review" label="Add review"}}
   </div>
-  <div class="content">
-    {{textarea type="text" name="content" value=content placeholder="Content"}}
-  </div>
-  <div class="image-path">
-    {{input type="text" name="imagePath" value=imagePath placeholder="Image path"}}
-  </div>
-  <button class="add-review" onclick={{action 'addReview'}}>Add review</button>
-</div>
+{{/validated-form}}

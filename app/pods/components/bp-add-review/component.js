@@ -2,30 +2,41 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import InsertBeerReview from 'pinte-ball/queries/mutations/insert-beer-review';
 import InsertBreweryReview from 'pinte-ball/queries/mutations/insert-brewery-review';
+import ReviewValidations from 'pinte-ball/validations/add-review';
 
 export default Component.extend({
   apollo: service('apollo'),
+
+  model: null,
+  ReviewValidations,
+
+  init() {
+    this._super(...arguments);
+    this.set('model', {});
+  },
+
   actions: {
-    addReview: function() {
-      // TODO: Input form validation
-      const variables = {
-        id: this.get('beerOrBreweryId') || '',
-        title: this.get('title') || '',
-        content: this.get('content') || '',
-        rating: this.get('rating') || 0,
-        imagePath: this.get('imagePath') || ''
-      }
+    addReview: function(model) {
+      return model.save().then(() => {
+        const variables = {
+          id: this.get('beerOrBreweryId'),
+          title: model.get('reviewTitle'),
+          content: model.get('reviewContent'),
+          rating: model.get('reviewRating'),
+          imagePath: model.get('reviewImagePath')
+        }
 
-      let mutation;
+        let mutation;
 
-      if (this.get('type') === 'beer') {
-        mutation = InsertBeerReview;
-      } else {
-        mutation = InsertBreweryReview;
-      }
+        if (this.get('type') === 'beer') {
+          mutation = InsertBeerReview;
+        } else {
+          mutation = InsertBreweryReview;
+        }
 
-      this.apollo.client.mutate({mutation, variables}).then(() => {
-        this.get('onAddReview')();
+        this.apollo.client.mutate({mutation, variables}).then(() => {
+          this.get('onAddReview')();
+        });
       });
     }
   }
