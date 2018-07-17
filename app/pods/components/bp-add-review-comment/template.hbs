@@ -1,4 +1,6 @@
-<div class="review-comment-form">
-  {{input type="text" class="review-comment-content" name="comment-content" value=commentContent placeholder="Comment"}}
-  <button class="add-review-comment" onclick={{action 'addReviewComment'}}>Comment</button>
-</div>
+{{#validated-form model=(changeset model ReviewCommentValidations) on-submit=(action "addReviewComment") as |f|}}
+  <div class="review-comment-form">
+    {{f.input type="text" class="review-comment-content" name="commentContent" placeholder="Comment"}}
+    {{f.submit class="add-review-comment" label="Comment"}}
+  </div>
+{{/validated-form}}

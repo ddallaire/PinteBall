@@ -5,6 +5,13 @@ module.exports = function(environment) {
     apollo: {
       apiURL: "http://localhost:3000/graphql"
     },
+    "ember-validated-form": {
+      css: {
+        group: 'form-group',
+        error: 'is-invalid',
+        help: "form-error-msg"
+      }
+    },
     modulePrefix: 'pinte-ball',
     podModulePrefix: 'pinte-ball/pods',
     environment,

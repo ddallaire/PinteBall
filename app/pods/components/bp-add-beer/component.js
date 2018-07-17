@@ -3,40 +3,46 @@ import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import InsertBeer from 'pinte-ball/queries/mutations/insert-beer';
 import breweriesQuery from 'pinte-ball/queries/get-breweries';
+import BeerValidations from 'pinte-ball/validations/add-beer';
 
 export default Component.extend({
   apollo: service('apollo'),
 
+  model: null,
   breweries: null,
+  BeerValidations,
+
+  init() {
+    this._super(...arguments);
+    this.set('model', {});
+  },
 
   actions: {
-    updateStyleValue: function(style) {
-      this.set('selectedStyle', style);
-    },
-
-    updateBreweriesValues: function(breweries) {
+    updateBreweriesValues: function (breweries) {
       this.set('selectedBreweries', breweries);
     },
 
-    addBeer: function() {
-      const variables = {
-        name: this.get('name'),
-        description: this.get('description'),
-        ibu: this.get('ibu'),
-        alcoholPercent: this.get('alcoholPercent'),
-        imagePath: this.get('imagePath'),
-        breweries: this.get('selectedBreweries').map(b => b.id),
-        tags: this.get('tags').split(','),
-        style: this.get('selectedStyle.id'),
-      }
+    addBeer: function(model) {
+      return model.save().then(() => {
+        const variables = {
+          name: model.get('beerName'),
+          description: model.get('beerDescription'),
+          ibu: model.get('beerIbu'),
+          alcoholPercent: model.get('beerAlcoholPercent'),
+          imagePath: model.get('beerImagePath'),
+          breweries: model.get('beerBreweries').map(b => b.id),
+          tags: model.get('beerTags').split(','),
+          style: model.get('beerStyle.id'),
+        }
 
-      this.apollo.client.mutate({mutation: InsertBeer, variables}).then(() => {
-        this.get('onAddBeer')();
+        this.apollo.client.mutate({ mutation: InsertBeer, variables }).then(() => {
+          this.get('onAddBeer')();
+        });
       });
     },
   },
 
-  breweriesQuery: computed(function() {
+  breweriesQuery: computed(function () {
     return this.get('apollo').query({
       query: breweriesQuery,
       variables: {
@@ -47,5 +53,5 @@ export default Component.extend({
     }, "breweries").then(result => {
       this.set('breweries', result);
     });
-  })
+  }),
 });

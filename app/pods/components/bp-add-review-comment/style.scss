@@ -1,17 +1,34 @@
 .review-comment-form {
-  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
 
-  input {
-    border-radius: 50px;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+  .form-group {
+    input {
+      width: 100%;
+      height: 40px;
+      border-radius: 50px;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
   }
 
   .review-comment-content {
     width: 50%;
+  }
+
+  .add-review-comment {
+    margin: 8px 0;
+    height: 40px;
+  }
+
+  .form-error-msg {
+    display: block;
+    font-size: 12px;
+    color: red;
+    margin: 0 5px 10px;
   }
 }

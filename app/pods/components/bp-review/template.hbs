@@ -21,6 +21,13 @@
 <div class="actions">
   <p class="action" onclick={{action 'showAddComment'}}>Comment</p>
 </div>
+{{#if displayAddComment}}
+  {{#if review.idBeerReview}}
+    {{bp-add-review-comment type=type id=review.idBeerReview onAddComment=(action 'refetchComments')}}
+  {{else}}
+    {{bp-add-review-comment type=type id=review.idBreweryReview onAddComment=(action 'refetchComments')}}
+  {{/if}}
+{{/if}}
 {{#if (is-pending commentsQuery)}}
   {{bp-loading}}
 {{else}}
@@ -28,12 +35,5 @@
     {{#each comments as |comment|}}
       {{bp-review-comment comment=comment}}
     {{/each}}
-  {{/if}}
-{{/if}}
-{{#if displayAddComment}}
-  {{#if review.idBeerReview}}
-    {{bp-add-review-comment type=type id=review.idBeerReview onAddComment=(action 'refetchComments')}}
-  {{else}}
-    {{bp-add-review-comment type=type id=review.idBreweryReview onAddComment=(action 'refetchComments')}}
   {{/if}}
 {{/if}}

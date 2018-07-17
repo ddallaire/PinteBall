@@ -1,7 +1,10 @@
 <h2>Recent reviews</h2>
 <button onclick={{action 'showAddReview'}}>Rate it</button>
 {{#if displayAddReview}}
-  {{bp-add-review type=type beerOrBreweryId=beerOrBreweryId onAddReview=(action 'refetchReviews')}}
+  {{#modal-dialog translucentOverlay=true
+                  onClose="showAddReview"}}
+    {{bp-add-review type=type beerOrBreweryId=beerOrBreweryId onAddReview=(action 'refetchReviews')}}
+  {{/modal-dialog}}
 {{/if}}
 <div>
 {{#if (is-pending reviewsQuery)}}
