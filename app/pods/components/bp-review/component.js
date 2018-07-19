@@ -8,7 +8,7 @@ import InsertBreweryReviewThumbsup from 'pinte-ball/queries/mutations/insert-bre
 import DeleteBreweryReviewThumbsup from 'pinte-ball/queries/mutations/delete-brewery-review-thumbsup';
 import InsertBeerReviewThumbsup from 'pinte-ball/queries/mutations/insert-beer-review-thumbsup';
 import DeleteBeerReviewThumbsup from 'pinte-ball/queries/mutations/delete-beer-review-thumbsup';
-import { debounce } from '@ember/runloop';
+import { task } from 'ember-concurrency';
 
 export default Component.extend({
   apollo: service('apollo'),
@@ -52,7 +52,7 @@ export default Component.extend({
     return this.get('review.thumbsups').length;
   }),
 
-  saveThumbsup: function() {
+  toggleLike: task(function*() {
     let query = null;
     let variables = null;
     const userLiked = !this.get('liked');
@@ -70,8 +70,9 @@ export default Component.extend({
       variables = {id: this.get('review.idBreweryReview')};
     }
 
-    this.apollo.client.mutate({mutation: query, variables}).then(this.get('onThumbsup'));
-  },
+    yield this.apollo.client.mutate({mutation: query, variables});
+    this.get('onThumbsup');
+  }).drop(),
 
   actions: {
     showAddComment: function() {
@@ -81,10 +82,6 @@ export default Component.extend({
     refetchComments() {
       this.toggleProperty('displayAddComment');
       getObservable(this.get('comments')).refetch();
-    },
-
-    toggleLike: function() {
-      debounce(this, this.saveThumbsup, 300);
     }
   }
 });

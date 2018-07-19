@@ -19,7 +19,7 @@
   {{/if}}
 </div>
 <div class="actions">
-  <p class="action" {{action "toggleLike"}}>{{if liked "Unlike"}}{{unless liked "Like"}}</p>
+  <p class="action" onclick={{perform toggleLike}}>{{if liked "Unlike"}}{{unless liked "Like"}}</p>
   <p class="action" onclick={{action 'showAddComment'}}>Comment</p>
 </div>
 {{#if displayAddComment}}
