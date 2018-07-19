@@ -23,7 +23,7 @@ export default Component.extend({
           title: model.get('reviewTitle'),
           content: model.get('reviewContent'),
           rating: model.get('reviewRating'),
-          imagePath: model.get('reviewImagePath')
+          imagePath: model.get('reviewImagePath') || ''
         }
 
         let mutation;
