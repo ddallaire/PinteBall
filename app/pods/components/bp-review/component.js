@@ -8,6 +8,7 @@ import InsertBreweryReviewThumbsup from 'pinte-ball/queries/mutations/insert-bre
 import DeleteBreweryReviewThumbsup from 'pinte-ball/queries/mutations/delete-brewery-review-thumbsup';
 import InsertBeerReviewThumbsup from 'pinte-ball/queries/mutations/insert-beer-review-thumbsup';
 import DeleteBeerReviewThumbsup from 'pinte-ball/queries/mutations/delete-beer-review-thumbsup';
+import { task } from 'ember-concurrency';
 
 export default Component.extend({
   apollo: service('apollo'),
@@ -51,6 +52,28 @@ export default Component.extend({
     return this.get('review.thumbsups').length;
   }),
 
+  toggleLike: task(function*() {
+    let query = null;
+    let variables = null;
+    const userLiked = !this.get('liked');
+    const count = this.get('thumbsupCount');
+
+    this.set('liked', userLiked);
+    this.set('thumbsupCount', userLiked ? count+1 : count-1);
+
+
+    if (this.get('type') === 'beer') {
+      query = userLiked ? InsertBeerReviewThumbsup: DeleteBeerReviewThumbsup;
+      variables = {id: this.get('review.idBeerReview')};
+    } else {
+      query = userLiked ? InsertBreweryReviewThumbsup : DeleteBreweryReviewThumbsup;
+      variables = {id: this.get('review.idBreweryReview')};
+    }
+
+    yield this.apollo.client.mutate({mutation: query, variables});
+    this.get('onThumbsup');
+  }).drop(),
+
   actions: {
     showAddComment: function() {
       this.toggleProperty('displayAddComment');
@@ -59,27 +82,6 @@ export default Component.extend({
     refetchComments() {
       this.toggleProperty('displayAddComment');
       getObservable(this.get('comments')).refetch();
-    },
-
-    toggleLike: function() {
-      let query = null;
-      let variables = null;
-      const userLiked = !this.get('liked');
-      const count = this.get('thumbsupCount');
-
-      this.set('liked', userLiked);
-      this.set('thumbsupCount', userLiked ? count+1 : count-1);
-
-
-      if (this.get('type') === 'beer') {
-        query = userLiked ? InsertBeerReviewThumbsup: DeleteBeerReviewThumbsup;
-        variables = {id: this.get('review.idBeerReview')};
-      } else {
-        query = userLiked ? InsertBreweryReviewThumbsup : DeleteBreweryReviewThumbsup;
-        variables = {id: this.get('review.idBreweryReview')};
-      }
-
-      this.apollo.client.mutate({mutation: query, variables}).then(this.get('onThumbsup'));
     }
-  },
+  }
 });
