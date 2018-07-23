@@ -5,9 +5,9 @@ const Star = EmberObject.extend({});
 
 export default Component.extend({
   stars: null,
-  starsBuffer: null,
-  ratingBuffer: null,
-  ratingResetIndex: 0,
+  lastStarsState: null,
+  lastRating: null,
+  lastStarClicked: 0,
 
   init() {
     this._super(...arguments);
@@ -19,49 +19,39 @@ export default Component.extend({
     }
 
     this.set('stars', starArray);
-    this.set('starsBuffer', bufferArray);
-    this.set('ratingBuffer', 0);
+    this.set('lastStarsState', bufferArray);
+    this.set('lastRating', 0);
   },
 
   actions: {
     starMouseEnter: function(e) {
-      if(e.target.id != this.get('ratingResetIndex')) {
-        let starArray = this.get('stars');
-        starArray.forEach((item, index) => {
+      if(e.target.id == this.get('lastStarClicked')) {
+        this.set('lastStarClicked', null);
+      } else {
+        this.get('stars').forEach((item, index) => {
           item.set('active', index <= e.target.id);
         });
-      } else {
-        this.set('ratingResetIndex', null);
       }
     },
 
     starContainerMouseLeave: function() {
-      let starsBuffer = this.get('starsBuffer');
-      this.get('stars').forEach((item, index) => {
-        item.set('active', starsBuffer.objectAt(index).active);
-      });
+      this.set('stars', this.get('lastStarsState'));
     },
 
     starsClick: function(e) {
+      const lastRating = this.get('lastRating');
+      const stars = this.get('stars');
       let newRating = parseInt(e.target.id) + 1;
-      let ratingBuffer = this.get('ratingBuffer');
-      if(newRating == ratingBuffer) {
+      
+      if(newRating == lastRating) {
         newRating = 0;
-        this.get('stars').forEach((item, index) => {
-          item.set('active', false);
-        });
-
-        this.set('ratingResetIndex', e.target.id);
+        stars.setEach('active', false);
+        this.set('lastStarClicked', e.target.id);
       }
 
-      let stars = this.get('stars');
-
-      this.get('starsBuffer').forEach((item, index) => {
-        item.set('active', stars.objectAt(index).active);
-      });
-
       this.get('onStarClick')(newRating);
-      this.set('ratingBuffer', newRating);
+      this.set('lastStarsState', stars);
+      this.set('lastRating', newRating);
     }
   }
 });
