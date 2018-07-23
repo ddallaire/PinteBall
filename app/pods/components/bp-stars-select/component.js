@@ -34,8 +34,11 @@ export default Component.extend({
       }
     },
 
-    starContainerMouseLeave: function() {
-      this.set('stars', this.get('lastStarsState'));
+    starContainerMouseLeave: function() { 
+      const lastStars = this.get('lastStarsState');
+      this.get('stars').forEach((item, index) => {
+        item.set('active', lastStars.objectAt(index).active);
+      });
     },
 
     starsClick: function(e) {
@@ -50,7 +53,9 @@ export default Component.extend({
       }
 
       this.get('onStarClick')(newRating);
-      this.set('lastStarsState', stars);
+      this.get('lastStarsState').forEach((item, index) => {
+        item.set('active', stars.objectAt(index).active);
+      });
       this.set('lastRating', newRating);
     }
   }
