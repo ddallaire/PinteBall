@@ -29,6 +29,14 @@ export default Component.extend({
       this.toggleProperty('showAddBeer');
       getObservable(this.get('beers')).refetch();
       getObservable(this.get('beerTags')).refetch();
+    },
+
+    onTagFilterChange: function(newFilters) {
+      this.set('tagFilters', newFilters);
+    },
+
+    onStyleFilterChange: function(newFilters) {
+      this.set('styleFilters', newFilters);
     }
   },
 

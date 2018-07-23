@@ -25,6 +25,10 @@ export default Component.extend({
       this.toggleProperty('showAddBrewery');
       getObservable(this.get('breweries')).refetch();
       getObservable(this.get('breweriesTags')).refetch();
+    },
+
+    onTagFilterChange: function(filters) {
+      this.set('tagFilters', filters);
     }
   },
 
