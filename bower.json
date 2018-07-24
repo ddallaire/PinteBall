@@ -1,6 +1,5 @@
 {
   "name": "pinte-ball",
   "dependencies": {
-    "select2": "3.5.2"
   }
 }
