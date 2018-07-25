@@ -4,11 +4,13 @@
     {{f.input label='Name' type="text" name="beerName" placeholder="Name" required=true}}
     {{f.input label='Description' type="textarea" name="beerDescription" placeholder="Description" required=true}}
     {{f.input label='Image path' type="text" name="beerImagePath" placeholder="Image path" required=true}}
-    {{f.input label='IBU' type="text" name="beerIbu" placeholder="IBU" required=true}}
-    {{f.input label='Alcohol by volume (%)' type="text" name="beerAlcoholPercent" placeholder="Alcohol by volume (%)" required=true}}
+    <div class="inline">
+      {{f.input label='IBU' type="text" name="beerIbu" placeholder="IBU" required=true}}
+      {{f.input label='Alcohol (%)' type="text" name="beerAlcoholPercent" placeholder="Alcohol (%)" required=true}}
+    </div>
     {{#if (is-pending breweriesQuery)}}
     {{else}}
-      {{#f.input label="Brewery(ies)" name="beerBreweries" required=true as |fi|}}
+      {{#f.input label="Brewery(ies)" class="breweries" name="beerBreweries" required=true as |fi|}}
         {{#power-select-multiple
           selected=fi.value
           options=breweries
