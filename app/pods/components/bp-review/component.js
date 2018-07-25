@@ -61,7 +61,6 @@ export default Component.extend({
     this.set('liked', userLiked);
     this.set('thumbsupCount', userLiked ? count+1 : count-1);
 
-
     if (this.get('type') === 'beer') {
       query = userLiked ? InsertBeerReviewThumbsup: DeleteBeerReviewThumbsup;
       variables = {id: this.get('review.idBeerReview')};

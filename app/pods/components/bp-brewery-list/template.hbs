@@ -6,22 +6,13 @@
   {{/modal-dialog}}
 {{/if}}
 <div class="actions-container">
-  <div class="filter">
-    <div class="filter-name">Tag</div>
-    <i class="fa fa-chevron-down filter-arrow"></i>
-    <div class="filter-content">
-      {{#if (is-pending breweriesTagsQuery)}}
-        {{bp-loading}}
-      {{else}}
-        {{multiselect-checkboxes
-          options=breweriesTags
-          labelProperty='name'
-          selection=tagFilters
-        }}
-      {{/if}}
-    </div>
-  </div>
-  <div class="filter-header">Filter by:</div>
+  {{bp-filter
+    selected=tagFilters
+    filterOptions=breweriesTags
+    filterName="Tags"
+    onFilterChange=(action "onTagFilterChange")
+    query=breweriesTagsQuery
+  }}
   <button class="add-brewery" onclick={{action 'toggleAddBreweryModal'}}>Add a brewery</button>
 </div>
 {{#if (is-pending breweriesQuery)}}

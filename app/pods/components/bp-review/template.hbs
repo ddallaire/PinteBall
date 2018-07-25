@@ -1,6 +1,7 @@
 <div class="header">
   <div class="title">
-    <h3>{{review.title}} {{bp-stars-display rating=review.rating}}</h3>
+    <h3>{{review.title}}</h3>
+    {{bp-stars-display rating=review.rating}}
   </div>
   <div class="infos">
     by {{#link-to "profile/show" review.user.cip}}

@@ -1,0 +1,10 @@
+{{#power-select-multiple
+  selected=selected
+  options=filterOptions
+  placeholder=filterName
+  onchange=onFilterChange
+  allowClear=true
+  as |filterOption|
+}}
+  {{filterOption.name}}
+{{/power-select-multiple}}
