@@ -6,9 +6,9 @@ import ReviewValidations from 'pinte-ball/validations/add-review';
 
 export default Component.extend({
   apollo: service('apollo'),
-
   model: null,
   ReviewValidations,
+  reviewRating: 0,
 
   init() {
     this._super(...arguments);
@@ -22,7 +22,7 @@ export default Component.extend({
           id: this.get('beerOrBreweryId'),
           title: model.get('reviewTitle'),
           content: model.get('reviewContent'),
-          rating: model.get('reviewRating'),
+          rating: model.get('reviewRating') || 0,
           imagePath: model.get('reviewImagePath') || ''
         }
 

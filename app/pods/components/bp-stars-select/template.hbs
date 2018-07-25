@@ -1,0 +1,9 @@
+<div onMouseLeave={{action "starContainerMouseLeave"}}>
+  {{#each stars as |star|}}
+    {{#if star.active}}
+      <img src="/assets/images/star.svg" onMouseEnter={{action "starMouseEnter"}} onclick={{action "starsClick"}} class="star" id={{star.id}}>
+    {{else}}
+      <img src="/assets/images/star2.svg" onMouseEnter={{action "starMouseEnter"}} onclick={{action "starsClick"}} class="star" id={{star.id}}>
+    {{/if}}
+  {{/each}}
+</div>

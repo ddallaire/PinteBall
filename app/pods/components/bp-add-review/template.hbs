@@ -2,7 +2,11 @@
   <div class="add-review-form">
     <h2>Add a review</h2>
     {{f.input label="Title" type="text" class="title" name="reviewTitle" placeholder="Title" required=true}}
-    {{f.input label="Rating (/5)" type="text" name="reviewRating" class="rating" min="0" max="5" placeholder="Rating (/5)" required=true}}
+    {{#f.input label="Rating" name="reviewRating" as |fi|}}
+      <div class="rating">
+        {{bp-stars-select onStarClick=fi.update}}
+      </div>
+    {{/f.input}}
     {{f.input label="Content" type="textarea" name="reviewContent" placeholder="Content" required=true}}
     {{f.input label="Image path" type="text" name="reviewImagePath" placeholder="Image path"}}
     {{f.submit class="add-review" label="Add review"}}
