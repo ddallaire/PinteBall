@@ -10,6 +10,7 @@
   }
 
   .inline {
+    width: 75%;
     display: inline-flex;
 
     > :first-child {
@@ -67,12 +68,18 @@
   .add-beer-button {
     float: right;
   }
-
-  .ember-power-select-trigger {
-    width: 75%;
-    padding: 0;
-    font-size: 13.3px;
-    margin: 8px 5px;
-  }
 }
 
+.ember-power-select-trigger {
+  width: 75%;
+  padding: 0;
+  font-size: 13.3px;
+  margin: 8px 5px;
+}
+
+.ember-power-select-placeholder {
+  width: 75%;
+  padding: 0;
+  font-size: 13.3px;
+  margin: 8px 5px;
+}
